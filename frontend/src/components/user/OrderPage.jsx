@@ -19,7 +19,7 @@ const OrderPage = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/order/${id}`);
+        const response = await axios.get(`${process.env.REACT_BACKEND}/order/${id}`);
         setUserData(response.data.data);
       } catch (err) {
         console.error("Error fetching user for order page:", err);
@@ -38,7 +38,7 @@ const OrderPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`http://localhost:4000/order/${id}`, formData);
+      await axios.post(`${process.env.REACT_BACKEND}/order/${id}`, formData);
       alert("Order placed successfully!");
       navigate(`/orders/${id}`);
     } catch (err) {

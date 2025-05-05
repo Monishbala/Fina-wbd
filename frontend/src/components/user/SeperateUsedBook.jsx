@@ -9,7 +9,7 @@ const BookDetails = () => {
   const navigate = useNavigate()
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/sellbooks/book/${bookid}/${id}`)
+      .get(`${process.env.REACT_BACKEND}/sellbooks/book/${bookid}/${id}`)
       .then((response) => {
         setBookData(response.data.data);
       })
@@ -22,7 +22,7 @@ const BookDetails = () => {
 
   if (!bookData) return <div>Loading...</div>;
    const HandleBook= async() => {
-     await axios.get(`http://localhost:4000/used/buy/${bookid}/${id}`).then((response)=>{
+     await axios.get(`${process.env.REACT_BACKEND}/used/buy/${bookid}/${id}`).then((response)=>{
       if (response.status===200) {
          navigate(`/mybooks/${id}`)
       } else{

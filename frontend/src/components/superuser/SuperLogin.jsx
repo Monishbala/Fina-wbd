@@ -13,7 +13,7 @@ const LoginPage = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:4000/superUser/login", {
+      const response = await axios.post(`${process.env.REACT_BACKEND}/superUser/login`, {
         email: email,
         pass: password,
       });

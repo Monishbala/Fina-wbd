@@ -10,7 +10,7 @@ const MyBooksPage = () => {
   const [error, setError] = useState("");
   const fetchBooks = useCallback(async () => {
     try {
-      const response = await axios.get(`http://localhost:4000/mybooks/${id}`);
+      const response = await axios.get(`${process.env.REACT_BACKEND}/mybooks/${id}`);
       setBooks(response.data.data.books); // Assuming books are under `data.books`
     } catch (err) {
       console.error("Error fetching books:", err);
@@ -25,9 +25,9 @@ const MyBooksPage = () => {
     try {
       // Adjust the endpoint as needed to delete a book from the user's cart.
      if(!book.seller){
-      await axios.delete(`http://localhost:4000/mybooks/${id}/delete/${bookId}`);
+      await axios.delete(`${process.env.REACT_BACKEND}/mybooks/${id}/delete/${bookId}`);
     }else{
-      await axios.delete(`http://localhost:4000/used/mybooks/${id}/delete/${bookId}`);
+      await axios.delete(`${process.env.REACT_BACKEND}/used/mybooks/${id}/delete/${bookId}`);
     }
       // Update state locally after deletion.
       fetchBooks()

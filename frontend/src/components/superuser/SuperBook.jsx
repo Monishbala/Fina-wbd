@@ -47,7 +47,7 @@ const AddBook = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:4000/addbook', formData)
+    axios.post(`${process.env.REACT_BACKEND}`, formData)
       .then(response => {
         alert('Book added successfully');
         setFormData({

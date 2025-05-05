@@ -33,7 +33,7 @@ const Signup = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:4000/signup", { email, pass1: pass1 , pass2:pass2 });
+      const response = await axios.post(`${process.env.REACT_BACKEND}/signup`, { email, pass1: pass1 , pass2:pass2 });
       if (response.status === 200) {
         alert("User registered successfully");
       } else {

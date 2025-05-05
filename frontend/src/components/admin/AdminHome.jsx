@@ -12,7 +12,7 @@ const AdminHome = () => {
   const navigate = useNavigate();
   const fetchData = useCallback(async () => {
     try {
-      const response = await axios.get(`http://localhost:4000/adminhome/${admin}`);
+      const response = await axios.get(`${process.env.REACT_BACKEND}/adminhome/${admin}`);
       const { data, admin: adminInfo } = response.data;
       // Set all the data in useEffect itself
       setUsersData(data.usersdata);
@@ -32,7 +32,7 @@ const AdminHome = () => {
 
   if (loading) return <div>Loading...</div>;
   const  handledelete= async(id)=>{
-    axios.get(`http://localhost:4000/delete/user/${id}`).then((response)=>{
+    axios.get(`${process.env.REACT_BACKEND}/delete/user/${id}`).then((response)=>{
            fetchData()
            alert("user deleted successfuully")
        })

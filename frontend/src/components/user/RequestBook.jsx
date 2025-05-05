@@ -39,7 +39,7 @@ const RequestBook = () => {
         return;
       }
     try {
-      const response = await axios.post("http://localhost:4000/request", formData);
+      const response = await axios.post(`${process.env.REACT_BACKEND}/request`, formData);
       alert(response.data); // Show success message
       setFormData({
         isbn: "",

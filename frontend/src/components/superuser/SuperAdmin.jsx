@@ -13,7 +13,7 @@ const CreateAdmin = () => {
     const adminData = { username: email, password };
     
     try {
-      const response = await axios.post('http://localhost:4000/admincreate', adminData);
+      const response = await axios.post(`${process.env.REACT_BACKEND}/admincreate`, adminData);
       if (response.data === "Admin has been successfully created") {
         alert('Admin created successfully');
         setEmail("");

@@ -13,7 +13,7 @@ const SuperHome = () => {
     {
       navigate("/superuser")
     }
-    axios.get('http://localhost:4000/superuser/home')
+    axios.get(`${process.env.REACT_BACKEND}/superuser/home`)
       .then((response) => {
         setAdmins(response.data.admins);
       })
@@ -23,7 +23,7 @@ const SuperHome = () => {
   }, [navigate]);
 
   const handleChangePermissions = (adminId, permissions) => {
-    axios.post(`http://localhost:4000/admincreate/changepermissions/${adminId}`, permissions)
+    axios.post(`${process.env.REACT_BACKEND}/admincreate/changepermissions/${adminId}`, permissions)
       .then((response) => {
         alert("Permission updated")
         console.log('Permissions updated', response.data);

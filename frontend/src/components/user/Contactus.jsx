@@ -119,7 +119,7 @@ export default function ContactUs() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:4000/contact", formData);
+      await axios.post(`${process.env.REACT_BACKEND}/contact`, formData);
       setMessage("Your message has been sent successfully!");
       setFormData({
         name: "",

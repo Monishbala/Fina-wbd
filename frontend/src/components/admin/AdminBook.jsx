@@ -16,7 +16,7 @@ const AdminBook = () => {
     try {
       console.log(admin);
       
-      const response = await axios.get(`http://localhost:4000/adminhome/bookadmin/${admin}`);
+      const response = await axios.get(`${process.env.REACT_BACKEND}/adminhome/bookadmin/${admin}`);
       console.log(response.data);
       
       const { data, admin2: adminInfo } = response.data;

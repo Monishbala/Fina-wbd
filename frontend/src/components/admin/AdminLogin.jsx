@@ -11,7 +11,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:4000/admin/login", {
+      const response = await axios.post(`${process.env.REACT_BACKEND}/admin/login`, {
         email,
         password,
       });

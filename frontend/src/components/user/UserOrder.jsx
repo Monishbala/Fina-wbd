@@ -12,7 +12,7 @@ const UserOrders = () => {
   useEffect(() => {
     const fetchUserOrders = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/orders/${id}`);
+        const response = await axios.get(`${process.env.REACT_BACKEND}/orders/${id}`);
         setUser(response.data.user);
       } catch (err) {
         console.error("Error fetching user orders:", err);
