@@ -23,6 +23,7 @@ import RequestBook from './components/user/RequestBook';
 import CartPage from './components/user/CartPage';
 import OrderPage from './components/user/OrderPage';
 import UserOrder from './components/user/UserOrder'
+import SeperateUsedBook from './components/user/SeperateUsedBook'
 import SuperAnalytics from './components/superuser/SuperAnalytics'
 import TermOfUse from './components/user/TermOfUse';
 import Faq from './components/user/Faq';
@@ -50,6 +51,7 @@ function App() {
         <Route path="/bestseller/:id" element={<AllBestSeller />} />
         <Route path="/sellbooks/:id" element={<SellBook />} />
         <Route path="/usedBook/:id" element={<UsedBook />} />
+        <Route path="/usedBooks/:bookid/:id" element={<SeperateUsedBook />} />
         <Route path="/request/:id" element={< RequestBook />} />
         <Route path="/mybooks/:id" element={< CartPage />} />
         <Route path="/order/:id" element={< OrderPage />} />

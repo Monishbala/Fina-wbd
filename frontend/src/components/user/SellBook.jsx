@@ -15,15 +15,17 @@ const SellBook = () => {
     Price: "",
     MRP: "",
     Language: "",
+    count:0,
     ISBN_10: "",
     ISBN_13: "",
     Pages: "",
     About_the_Book: "",
+    user:id
   };
 
   const [formData, setFormData] = useState(initialFormData);
   const [errors, setErrors] = useState({});
-
+  
  
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -82,13 +84,20 @@ const SellBook = () => {
       return;
     }
     try {
-      const response = await axios.post(`http://localhost:4000/sellbooks`, formData);
-      alert(response.data); // Show success message
+      // Include user ID in the form data
+      const dataToSend = {
+        ...formData,
+        userId: id // Add the user ID from the URL params
+      };
+      
+      const response = await axios.post(`http://localhost:4000/sellbooks`, dataToSend);
+      alert(response.data.message || "Book listed successfully!");
       setFormData(initialFormData); // Clear the form
       setErrors({}); // Clear errors
     } catch (error) {
       console.error("Error submitting the form:", error);
-      alert("Failed to sell the book. Please try again.");
+      const errorMessage = error.response?.data?.message || "Failed to sell the book. Please try again.";
+      alert(errorMessage);
     }
   };
 
@@ -99,28 +108,30 @@ const SellBook = () => {
         <h1>Sell Your Book</h1>
         <form onSubmit={handleSubmit}>
           {Object.keys(formData).map((key) => (
-            <div key={key} className="form-group">
-              <label htmlFor={key}>{key.replace(/_/g, " ")}:</label>
-              {key === "About_the_Book" ? (
-                <textarea
-                  id={key}
-                  name={key}
-                  value={formData[key]}
-                  onChange={handleChange}
-                  rows="4"
-                />
-              ) : (
-                <input
+            key === "user" ? null : (
+              <div key={key} className="form-group">
+                  <label htmlFor={key}>{key.replace(/_/g, " ")}:</label>
+                {key === "About_the_Book" ? (
+                  <textarea
+                    id={key}
+                    name={key}
+                    value={formData[key]}
+                    onChange={handleChange}
+                    rows="4"
+                  />
+                ) : (
+                  <input
                     type={getInputType(key)}
                     id={key}
                     name={key}
                     value={formData[key]}
                     onChange={handleChange}
                     min={key === "Released" ? getTodayDate() : undefined} // Add min for Released
-                />
-              )}
-              {errors[key] && <span className="error-message">{errors[key]}</span>}
-            </div>
+                  />
+                )}
+                {errors[key] && <span className="error-message">{errors[key]}</span>}
+              </div>
+            )
           ))}
           <button type="submit" className="submit-btn">
             Submit

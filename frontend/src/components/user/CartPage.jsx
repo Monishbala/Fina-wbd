@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import Navbar from "./Navbar";
 // import Footer from "./Footer";
-import {Trash} from 'lucide-react'
+import {CloudCog, Trash} from 'lucide-react'
 const MyBooksPage = () => {
   const { id } = useParams();
   const [books, setBooks] = useState([]);
@@ -20,10 +20,15 @@ const MyBooksPage = () => {
   useEffect(() => {
     fetchBooks();
   }, [id, fetchBooks]);
-  const deleteBook = async (bookId) => {
+  const deleteBook = async (bookId , book) => {
+    console.log(book)
     try {
       // Adjust the endpoint as needed to delete a book from the user's cart.
+     if(!book.seller){
       await axios.delete(`http://localhost:4000/mybooks/${id}/delete/${bookId}`);
+    }else{
+      await axios.delete(`http://localhost:4000/used/mybooks/${id}/delete/${bookId}`);
+    }
       // Update state locally after deletion.
       fetchBooks()
     } catch (err) {
@@ -102,7 +107,7 @@ const MyBooksPage = () => {
               <p style={styles.bookPrice}>Count: {book.count}</p>
             </div>
             <Trash
-              onClick={() => deleteBook(book.book._id)}
+              onClick={() => deleteBook(book.book._id , book)}
               style={styles.deleteButton}
               title="Delete Book"
             />

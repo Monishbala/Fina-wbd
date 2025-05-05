@@ -7,7 +7,8 @@ const userDetail = Mongo.Schema({
     password: String,
     books: [{
       count:Number,
-      book:bookschema
+      book:bookschema,
+      seller:String
     }],
     orders: [orderschema],
     isVerified: { type: Boolean, default: true }

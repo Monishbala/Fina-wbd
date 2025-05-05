@@ -132,7 +132,7 @@ const AllBooks = () => {
         <div className="books-grid">
           {filterBooks().map((book) => (
             <div className="book-card" key={book._id}>
-              <a href={`/book/${book._id}/${id}`}>
+              <a href={`/usedBooks/${book._id}/${id}`}>
                 <img src={book.ImageUrl} alt={book.Title} />
               </a>
               <div className="book-info">

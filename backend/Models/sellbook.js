@@ -1,6 +1,5 @@
 const Mongo = require("mongoose");
 
-
 const sellbook = Mongo.Schema({
     ImageUrl: String,
     Title: String,
@@ -10,10 +9,15 @@ const sellbook = Mongo.Schema({
     Price: String,
     MRP: String,
     Language: String,
+    count: Number,
     ISBN_10: String,
     ISBN_13: String,
     Pages: String,
     About_the_Book: String,
+    seller: {
+      type: String,
+      required: true
+    },
     Reviews: [
       {
         name: String,
@@ -22,7 +26,6 @@ const sellbook = Mongo.Schema({
       },
     ],
   });
-
 
 const sellmodel = Mongo.model("sellbook", sellbook);
 

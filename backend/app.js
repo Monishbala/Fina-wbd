@@ -199,6 +199,42 @@ app.get("/buy/:bookid/:userid", async function (req, res) {
   }
 });
 
+app.get("/used/buy/:bookid/:userid", async function (req, res) {
+  try {
+    const user = await userModel3.findOne({ _id: req.params.userid });
+    if (!user) return res.status(404).send("User not found");
+
+    const book = await sellmodel.findOne({ _id: req.params.bookid });
+    if (!book) return res.status(404).send("Book not found");
+
+    // Check the available stock for the book.
+    if (book.count <= 0) {
+      return res.status(400).send("Books over");
+    }
+
+    book.count = book.count - 1;
+    
+    await book.save();
+    const existingEntry = user.books.find(
+      (entry) => entry.book._id.toString() === book._id.toString()
+    );
+
+    if (existingEntry) {
+      // Increase the count for this user's book.
+      existingEntry.count = (existingEntry.count || 1) + 1;
+    } else {
+      // Add new book entry with count set to 1.
+      user.books.push({ book: book, count: 1 ,seller:book.seller });
+    }
+
+    await user.save();
+    res.status(200).send("Successful");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 app.delete("/mybooks/:userid/delete/:bookid", async (req, res) => {
   try {
     const { userid, bookid } = req.params;
@@ -226,6 +262,43 @@ app.delete("/mybooks/:userid/delete/:bookid", async (req, res) => {
 
     // Increase the available stock count in the books collection.
     const book = await bookmodel.findOne({ _id: bookid });
+    if (!book) return res.status(404).send("Book not found");
+    book.count = book.count + 1;
+    await book.save();
+    await user.save();
+    res.status(200).send("Book deleted from cart and count updated");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal Server Error");
+  }
+});
+app.delete("/used/mybooks/:userid/delete/:bookid", async (req, res) => {
+  try {
+    const { userid, bookid } = req.params;
+
+    // Find the user by userid.
+    const user = await userModel3.findOne({ _id: userid });
+    if (!user) return res.status(404).send("User not found");
+
+    // Find the index of the book in the user's cart.
+    const bookIndex = user.books.findIndex(
+      (entry) => entry.book._id.toString() === bookid
+    );
+    if (bookIndex === -1) return res.status(404).send("Book not in cart");
+
+    // Get the cart entry.
+    const cartEntry = user.books[bookIndex];
+
+    // Remove one copy from the user's cart.
+    if (cartEntry.count > 1) {
+      cartEntry.count = cartEntry.count - 1;
+    } else {
+      // Remove the entry if only one copy exists.
+      user.books.splice(bookIndex, 1);
+    }
+
+    // Increase the available stock count in the books collection.
+    const book = await sellmodel.findOne({ _id: bookid });
     if (!book) return res.status(404).send("Book not found");
     book.count = book.count + 1;
     await book.save();
