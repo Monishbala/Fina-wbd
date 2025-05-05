@@ -2,7 +2,7 @@ const Redis = require('redis');
 
 // Create Redis client with Upstash configuration
 const redisClient = Redis.createClient({
-    url: process.env.REDIS_URL,
+    url: process.env.REDIS_URL || 'redis://localhost:6379',
     socket: {
         connectTimeout: 10000, // 10 seconds
         reconnectStrategy: (retries) => {
@@ -33,25 +33,31 @@ redisClient.on('reconnecting', () => {
 
 // Connect to Redis with error handling
 const connectRedis = async () => {
-    try {
-        await redisClient.connect();
-    } catch (error) {
-        console.error('Failed to connect to Redis:', error);
-        // Don't throw the error, just log it
+    if (!redisClient.isOpen) {
+        try {
+            await redisClient.connect();
+        } catch (error) {
+            console.error('Failed to connect to Redis:', error);
+            // Don't throw the error, just log it
+        }
     }
 };
 
 // Disconnect from Redis
 const disconnectRedis = async () => {
-    try {
-        await redisClient.quit();
-    } catch (error) {
-        console.error('Failed to disconnect from Redis:', error);
+    if (redisClient.isOpen) {
+        try {
+            await redisClient.quit();
+        } catch (error) {
+            console.error('Failed to disconnect from Redis:', error);
+        }
     }
 };
 
-// Call connectRedis to establish the connection
-connectRedis();
+// Only auto-connect if not in test environment
+if (process.env.NODE_ENV !== 'test') {
+    connectRedis();
+}
 
 // Cache middleware
 const cacheMiddleware = async (req, res, next) => {

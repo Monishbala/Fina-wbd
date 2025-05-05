@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { redisClient, disconnectRedis } = require('../config/redis');
 
 // Global setup for all tests
 beforeAll(async () => {
@@ -13,7 +14,13 @@ beforeAll(async () => {
 
 // Global cleanup after all tests
 afterAll(async () => {
+  // Close MongoDB connection
   await mongoose.connection.close();
+  
+  // Close Redis connection
+  if (redisClient.isOpen) {
+    await disconnectRedis();
+  }
 });
 
 // Clean up database before each test
