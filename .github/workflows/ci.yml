@@ -53,21 +53,11 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '18'
-        cache: 'npm'
     
-    - name: Install backend dependencies
+    - name: Install and Test Backend
+      working-directory: ./backend
       run: |
-        cd backend
         npm install
-    
-    - name: Run backend linting
-      run: |
-        cd backend
-        npx eslint . --ext .js || true
-    
-    - name: Run backend tests
-      run: |
-        cd backend
         npm test
     
     - name: Upload backend test coverage
@@ -88,21 +78,11 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '18'
-        cache: 'npm'
     
-    - name: Install frontend dependencies
+    - name: Install and Build Frontend
+      working-directory: ./frontend
       run: |
-        cd frontend
         npm install
-    
-    - name: Run frontend linting
-      run: |
-        cd frontend
-        npx eslint src/ --ext .js,.jsx || true
-    
-    - name: Build frontend
-      run: |
-        cd frontend
         npm run build
     
     - name: Upload frontend build
