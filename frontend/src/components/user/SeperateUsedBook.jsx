@@ -23,24 +23,7 @@ const BookDetails = () => {
       });
   }, [bookid, id]);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setReview((prev) => ({ ...prev, [name]: value }));
-  };
 
-  const submitReview = (e) => {
-    e.preventDefault();
-    axios
-      .post(`http://localhost:4000/book/${bookData._id}/${id}`, review)
-      .then(() => {
-        alert("Review submitted successfully");
-        setReview({ name: "", rating: "", description: "" });
-      })
-      .catch((error) => {
-        console.error("Error submitting review:", error);
-
-      });
-  };
 
   if (!bookData) return <div>Loading...</div>;
    const HandleBook= async() => {
@@ -73,7 +56,7 @@ const BookDetails = () => {
             <p className="mrp">{bookData.MRP}</p>
           </div>
           <div className="buy-box">
-            {bookData.count > 0 && id!= bookData.seller && <button onClick={HandleBook} className="buy">Add to Cart</button>}
+            {bookData.count > 0 && id !== bookData.seller && <button onClick={HandleBook} className="buy">Add to Cart</button>}
               {/* <button onClick={HandleBook} className="buy">Buy Now</button> */}
           </div>
         </div>

@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import Navbar from "./Navbar";
 // import Footer from "./Footer";
-import {CloudCog, Trash} from 'lucide-react'
+import { Trash } from 'lucide-react'
 const MyBooksPage = () => {
   const { id } = useParams();
   const [books, setBooks] = useState([]);
