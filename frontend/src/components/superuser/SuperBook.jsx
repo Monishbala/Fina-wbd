@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Cookie from 'js-cookie'
 
 const AddBook = () => {
   const [formData, setFormData] = useState({
@@ -72,9 +71,6 @@ const AddBook = () => {
         alert('Error adding book');
       });
   };
-  const handlelogout = () =>{
-    Cookie.remove('superuser')
-}
   return (
     <div className="container">
 
