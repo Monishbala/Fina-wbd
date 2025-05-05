@@ -31,7 +31,7 @@ const BookDetails = () => {
   const submitReview = (e) => {
     e.preventDefault();
     axios
-      .post(`http://localhost:4000/book/${bookData._id}/${userid}`, review)
+      .post(`${process.env.REACT_APP_BACKENDURL}/book/${bookData._id}/${userid}`, review)
       .then(() => {
         alert("Review submitted successfully");
         setReview({ name: "", rating: "", description: "" });
