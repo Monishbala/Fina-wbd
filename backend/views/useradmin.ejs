@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="/admin.css">
+</head>
+<body>
+    <div class="admin-container">
+
+        <div class="sidebar">
+            <ul>
+                <li><a id="users" href="/adminhome/<%= admin._id %>">Users</a></li>
+                <li><a id="books" href="/adminhome/bookadmin/<%= admin._id %>">Books</a></li>
+                <li><a id="books" href="/admin/loginpages">Logout</a></li>
+                
+            </ul>
+        </div>
+       
+        <div class="main-content" id="main">
+           <div class="info">
+                <p class="info-1">Total no Of Users: <%= data.usersdata.length %></p>
+                <p class="info-1">Total no Of Books: <%= data.books.length %></p>
+                <p class="info-1">Total no Of Used Books: <%= data.sellbook.length %></p>
+           </div>
+           <div id="usersbox" class="users">
+            <h2 class="info">Users</h2>
+            <% for (let i = 0; i < data.usersdata.length; i++) { %>
+                   <div class="user">
+                    <h3>User <%= i+1 %></h3>
+                    <div class="username">Email: <%= data.usersdata[i].username %></div>
+                    <div class="password">Password <%= data.usersdata[i].password %></div>
+                    <% if (admin.permissions.user_deleting) { %>
+                <a href="/delete/user/<%= data.usersdata[i]._id  %>" style="text-decoration: none;"> <button type="button">Delete</button></a>
+                  <%  } %>
+                </div> 
+               <% } %>
+            </div>         
+            </div>
+            </div>
+    </div>
+</body>
+</html>
+<!-- <script>
+ document.getElementById("books").addEventListener("click" , function (params) {
+    console.log("jo");
+    document.getElementById("usersbox").style.display="none";
+    document.getElementById("bookbox").style.display="block";
+ })
+ document.getElementById("users").addEventListener("click" , function (params) {
+    document.getElementById("bookbox").style.display="none";
+    document.getElementById("usersbox").style.display="block";
+ })
+</script> -->

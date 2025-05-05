@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+   body
+   {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+   }
+   .navbar {
+    
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+
+  }
+  
+  .logo img {
+    flex-basis: 50%;
+    height: 90px; 
+    width: 160px;
+    margin-left: 70px;
+  }
+  
+  .nav-links {
+    display: flex;
+    justify-content: flex-end;
+    flex-basis: 75%;
+    margin-right: 80px;
+    
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: #fff;
+    margin-right: 100px;
+  }
+  
+  .nav-link:last-child {
+    margin-right: 0;
+  }
+
+  .nav-link:hover {
+    color: grey;
+    font-size: 20px;
+  }
+
+    .top
+    {
+     display: flex;
+    padding: 20px;
+    }
+    .box{
+        margin: 50px;
+    }
+    img{
+        height: 400px;
+        width: 300px;
+    }
+    .top-details{
+        font-size: 30px;
+        width: 60%;
+        margin-left: 30px;
+    }
+    .buy-box{
+        width: 20%;
+    }
+    .heading{
+        color:black;
+        font-size: 40px;
+        font-weight: bold;
+    }
+    .productdetails{
+        color: red;
+        font-size: 30px;
+        font-weight: bold;
+    }
+    .rate{
+        color: red;
+    }
+    .mrp{
+        color: lightgray;
+        text-decoration: line-through;
+    }
+    .second{
+        display: flex;
+        gap: 40px;
+        text-align: center;
+        margin-left: 700px;
+    }
+    .f2{
+        font-weight: bold;
+    }
+    .second img{
+        height: 50px;
+        width: 50px;
+    }
+    .det {
+        display: flex;
+        padding: 10px;
+    }
+
+    .book {
+        width:45%;
+        padding: 10px;
+        font-size: 25px;
+    }
+    .container {
+        width: 1000px;
+        margin: 50px auto;
+        padding: 20px;
+        font-size: 27px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="number"],
+    .form-group textarea {
+        width: 100%;
+        padding: 8px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+    }
+
+    .form-group textarea {
+        resize: vertical;
+        min-height: 100px;
+    }
+ .content{
+    font-size: 20px;
+ }
+    .btn {
+        display: inline-block;
+        background-color: #007bff;
+        color: #fff;
+        height: 50px;
+        width: 100px;
+        padding: 8px 15px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+ .personname{
+    color: green;
+    font-weight: bold;
+    font-size: 35px;
+ }
+ input{
+    height: 30px;
+ }
+    .btn:hover {
+        background-color: #0056b3;
+    }
+    .review{
+        font-size: 30px;
+    }
+    .buy-box button{
+      height: 35px;
+      width: 250px;
+      border-radius: 25px;
+     margin: 6px;
+    }
+    .buy{
+        background-color: green;
+        color: white;
+    }
+    .cart{
+        background-color: red;
+        color: white;
+    }
+    select{
+        width: 250px;
+        height: 35px;
+        margin: 6px;
+    }
+
+    .footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: white;
+    color: #fff;
+    padding: 20px;
+    
+  }
+  
+  
+  .footer-section {
+    width: 25%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  
+  .footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .footer-section p {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 5px;
+  }
+  
+  .footer-section ul li a {
+    color: black;
+    text-decoration: none;
+  }
+  
+  .footer-section ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  h3
+  {
+    color: red;
+  }
+
+  .social1-link {
+    margin-right: 10px;
+    text-decoration: none;
+    color:red;
+  }
+</style>
+<body>
+    <div class="navbar">
+        <div class="logo">
+          <img src="/images.png" alt="Mall Logo">
+        </div>
+        <div class="nav-links">
+          <a href="/users" class="nav-link">Home</a>
+          <a href="/bestseller" class="nav-link">Best Seller</a>
+          <a href="/topdeal" class="nav-link">Top Deals</a>
+          <a href="/authors" class="nav-link">Authors</a>
+          <a href="/request" class="nav-link">Request a Book</a>
+        </div>
+    </div>
+    <div class="box">
+        <div class="top">
+      <div class="image">
+            <img src=<%= data.ImageUrl %> alt="">
+      </div>
+      <div class="top-details">
+        <div class="heading"><%= data.Title %></div>
+        <div class="author">By: <%= data.Author %> (Author) | Publisher: <%= data.Publication %> (UK)</div>
+        <br>
+        <div class="rate"><%= data.Price %></div>
+        <div class="mrp"><%= data.MRP %></div>
+      </div>
+      <div class="buy-box">
+         <form action="">
+           <button class="buy" >Buy Now</button>
+         </form>
+      </div>
+        </div>
+
+        <hr>
+        <div class="second">
+            <div class="secondelement">
+                <p class="f1">ISBN 10</p>
+                <img src="https://www.bookswagon.com/images/icons/isbnicon.jpg" alt="">
+                <p class="f2"><%= data.ISBN_10 %></p>
+            </div>
+            <div class="secondelement">
+                <p class="f1">ISBN 13</p>
+                <img src="https://www.bookswagon.com/images/icons/isbnicon.jpg" alt="">
+                <p class="f2"><%= data.ISBN_13 %></p>
+            </div>
+            <div class="secondelement">
+                <p class="f1">Pages</p>
+                <img src="https://www.bookswagon.com/images/icons/pagenumbicon.jpg"" alt="">
+                <p class="f2"><%= data.Pages %></p>
+            </div>
+            <div class="secondelement">
+                <p class="f1">Language</p>
+                <img src="https://www.bookswagon.com/images/icons/language.png" alt="">
+                <p class="f2"><%= data.Language %></p>
+            </div>
+        </div>
+        <hr>
+        <div class="third">
+            <div class="productdetails">Product Details</div>
+            <div class="det">
+                <div class="book">
+                    <p><b>ISBN-13:</b> <%= data.ISBN_13 %></p>
+                    <p><b>Publisher:</b><%= data.Publication %>  </p>
+                    <p><b>Binding:</b> Paperback</p>
+                    <p><b>Language:</b><%= data.Language %> </p>
+                    <p><b>Spine Width:</b> 56 mm</p>
+                    <p><b>Width:</b> 153 mm</p>
+                    <p><b>ISBN-10:</b> <%= data.ISBN_10 %></p>
+                </div>
+                <div class="book">
+                    <p><b>Publisher Date:</b> 30 Jan 2024</p>
+                    <p><b>Height:</b> 234 mm</p>
+                    <p><b>No of Pages:</b> <%= data.Pages %></p>
+                    <p><b>Weight:</b> 916 gr</p>
+                </div>
+         </div>
+        </div>
+        <hr>
+        <div class="final">
+            <div class="about">
+ <div class="heading"> About The Book</div>
+ <div class="content">
+ <%= data.About_the_Book %>
+</div>           
+</div>
+    
+        </div>
+        <br>
+        <hr>
+        <div class="heading">Write a Review</div>
+        <div class="container">
+            <form method="post" action="/books/<%=data._id %>">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="rating">Rating Number:</label>
+                    <input type="number" id="rating" name="rating" min="1" max="5" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" required></textarea>
+                </div>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+        </div>
+        <hr>
+        <div class="heading">Reviews</div>
+        <br>
+        <hr>
+        <div class="reviews">
+            <% for (let index = 0; index < data.Reviews.length; index++) { %>
+            <div class="review">
+               <div class="personname"><%= data.Reviews[index].name %></div>  
+               <div class="rating"> Rating: <%= data.Reviews[index].Rating %></div>  
+              <br>
+               <div class="description"> <%= data.Reviews[index].description %> </div>  
+            <hr>
+            </div>
+           <% } %>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-section">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="/aboutus">About Us</a></li>
+            <li><a href="/contactus">Contactus</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Policies</h3>
+          <ul>
+            
+            <li><a href="/terms">Terms Of Use</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Connect With Us</h3>
+          <a href="#" class="social1-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social1-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social1-link"><i class="fab fa-youtube"></i></a>
+          
+        </div>
+        
+        <div class="footer-section">
+          <h3>Help</h3>
+          <ul>
+            <li><a href="/faq">FAQ</a></li>
+
+          </ul>
+          
+        </div>
+      </div>
+</body>
+</html>

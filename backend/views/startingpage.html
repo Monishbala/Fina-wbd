@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>intro</title>
+    <link rel="stylesheet" href="b.css" />
+  </head>
+  <style>
+    .box {
+      width: 100vw;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px;
+      bottom: 100vh;
+      z-index: 1;
+      position: relative;
+    }
+
+    .b {
+      height: 110px;
+      width: 110px;
+      border-radius: 0px;
+    }
+
+    .main {
+      height: 100vh;
+      z-index: 2;
+      position: relative;
+    }
+
+    .innerlinks {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+    }
+    .links {
+      margin-top: 40vh;
+      width: 100vw;
+      font-size: 40px;
+      display: flex;
+    }
+
+    .c {
+      height: 40px;
+      width: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      box-shadow: 0 0 0 0;
+    }
+
+    a {
+      margin: 10px;
+      text-decoration: none;
+    }
+
+    body {
+      background-color: black;
+      height: 90vh;
+      padding: 0;
+      margin: 0;
+      background-image: url(https://images.pexels.com/photos/2952871/pexels-photo-2952871.jpeg?auto=compress&cs=tinysrgb&w=600);
+      background-size: cover;
+      overflow-x: hidden;
+    }
+  </style>
+  <body>
+    <div class="links">
+      <div class="innerlinks">
+        <a href="/signup">
+          <div class="c">Register</div>
+        </a>
+        <a href="/login">
+          <div class="c">Login</div>
+        </a>
+        <a href="/superUser">
+          <div class="c">Super User</div>
+        </a>
+        <a href="/admin/loginpages">
+          <div class="c">Admin</div>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

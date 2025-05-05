@@ -1,0 +1,84 @@
+<!DOCTYPE html> 
+<html> 
+  <head> 
+    <title>Login Page</title> 
+    <style> 
+      /* Style the body to include the background image */ 
+      body { 
+        font-family: Arial, sans-serif; 
+        background-image: url(superuser.png); /* Replace with your image URL */ 
+        background-size: cover; /* Cover the whole screen */ 
+        background-position: center; /* Center the background image */ 
+        background-repeat: no-repeat; /* Avoid repeating the image */ 
+        display: flex; 
+        height: 160vh; /* Make the body cover the full viewport height */ 
+        margin: 0; /* Remove default margin */ 
+      } 
+ 
+      /* Style the login container */ 
+      .login-container { 
+        height: 200px; 
+        margin-left: 855px; 
+        padding: 20px; 
+        margin-top: 510px; 
+        border-radius: 8px; 
+        max-width: 400px; /* Set maximum width for the form */ 
+        width: 100%; /* Make the form responsive */ 
+      } 
+ 
+      /* Center the heading */ 
+      h2 { 
+        margin-bottom: 20px; 
+        text-align: center; 
+      } 
+ 
+      .info { 
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", 
+          sans-serif; 
+        font-size: 15px; 
+        margin-left: 0px; 
+        margin-bottom: 20px; 
+      } 
+ 
+      /* Style the input fields */ 
+      input[type="email"], 
+      input[type="password"] { 
+        height: 30px; 
+        width: 95%; 
+        padding: 10px; 
+        margin: 10px 0; 
+        border: 1px solid #ccc; 
+        border-radius: 4px; 
+        background-color: rgb(175, 191, 225); 
+      } 
+ 
+      /* Style the button */ 
+      button { 
+        height: 60px; 
+        width: 100%; 
+        padding: 10px; 
+        background-color: rgb(83, 106, 157); 
+        color: white; 
+        border: none; 
+        margin-top: 10px; 
+        border-radius: 4px; 
+        cursor: pointer; 
+      } 
+ 
+      /* Change button color on hover */ 
+      button:hover { 
+        background-color: #45a049; 
+      } 
+    </style> 
+  </head> 
+  <body> 
+    <div class="login-container"> 
+      <p class="info">Today a reader, Tomorrow a leader.</p> 
+      <form action="/superuser/login" method="post"> 
+        <input type="email" name="email" placeholder="email" required /> 
+        <input type="password" name="pass" placeholder="Password" required /> 
+        <button type="submit">Login</button> 
+      </form> 
+    </div> 
+  </body> 
+</html>

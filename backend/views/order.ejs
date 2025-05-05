@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            padding: 20px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .book {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .book img {
+            width: 80px;
+            margin-right: 15px;
+        }
+
+        .book p {
+            margin: 0;
+            color: #333;
+        }
+
+        .total-price {
+            color: red;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        button[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <form action="/order/<%= data._id %>" method="post">
+        <h1>Enter Details</h1>
+        <input required type="text" placeholder="Enter Name" name="name">
+        <input required type="text" placeholder="Enter Address" name="address">
+        <input required type="text" placeholder="Enter Phone" name="phone">
+        <input required type="text" placeholder="Enter City" name="city">
+        <input required type="text" placeholder="Enter Pincode" name="pincode">
+        <% let totalPrice = 0; %>
+        <% for (let i = 0; i < data.books.length; i++) { %>
+            <div class="book">
+                <img src="<%= data.books[i].ImageUrl %>" alt="">
+                <div class="pree">
+                <p>Title: <%= data.books[i].Title %></p>
+                <p>Price: ₹<%= data.books[i].Price %></p>
+                 </div>
+            </div>
+            <% totalPrice += Number(data.books[i].Price); %>
+        <% } %>
+        <p>Number of Items: <%= data.books.length %></p>
+        <p class="total-price">Total Price: ₹<%= totalPrice %></p>
+        <p>Payment Type:Cash on delivery </p>
+        <button type="submit">Order Now</button>
+    </form>
+</body>
+</html>

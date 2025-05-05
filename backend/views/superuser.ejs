@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super User</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Main layout with sidebar */
+        .container {
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Fixed sidebar styling */
+        .sidebar {
+            width: 30%;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+
+        /* Main content styling */
+        .content {
+            margin-left: 30%; /* Leave space for the fixed sidebar */
+            width: 70%;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            height: 100vh;
+        }
+
+        .items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start; /* Align items to the left */
+        }
+
+        .item {
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px; /* Adjust margin to have consistent spacing */
+            width: calc(33.33% - 20px); /* Adjust width for 3 items per row */
+            box-sizing: border-box; /* Include padding and border in width */
+        }
+
+        @media only screen and (max-width: 768px) {
+            .item {
+                width: calc(100% - 20px); /* Full width on small screens */
+            }
+
+            .content {
+                margin-left: 0;
+                width: 100%;
+            }
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="number"], textarea {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main container -->
+    <div class="container">
+        <!-- Fixed sidebar with navigation links -->
+        <div class="sidebar">
+            <a href="/superuser/home">Admins</a>
+            <a href="/admincreate">Create Admin</a>
+            <a href="/superuser/addbook">Add Book</a>
+            <a href="/superuser">Logout</a>
+        </div>
+
+        <!-- Main content area -->
+        <div class="content">
+            <div class="items">
+                <!-- Existing admin items will go here -->
+                <% for (let index = 0; index < admins.length; index++) { %>
+                <div class="item">
+                    <p>Name: <%= admins[index].username %></p>
+                    <p>Permissions:</p>
+
+                    <form action="/admincreate/changepermissions/<%= admins[index]._id %>" method="post">
+                        <label>
+                            <% if (admins[index].permissions.user_deleting) { %>
+                                <input name="user" type="checkbox" checked>
+                            <% } else { %>
+                                <input name="user" type="checkbox">
+                            <% } %>
+                            User Deleting
+                        </label>
+                        <label>
+                            <% if (admins[index].permissions.book_deleting) { %>
+                                <input name="book" type="checkbox" checked>
+                            <% } else { %>
+                                <input name="book" type="checkbox">
+                            <% } %>
+                            Book Deleting
+                        </label>
+
+                        <label>
+                            <input name="view" type="checkbox" onclick="return false" checked>
+                            Viewing
+                        </label>
+                        <button type="submit">Change</button>
+                    </form>
+                </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

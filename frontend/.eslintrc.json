@@ -1,0 +1,9 @@
+{
+  "extends": [
+    "./node_modules/eslint-config-react-app/index.js",
+    "./node_modules/eslint-config-react-app/jest.js"
+  ],
+  "rules": {
+    "react/react-in-jsx-scope": "off"
+  }
+} 

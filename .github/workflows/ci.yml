@@ -1,0 +1,128 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    
+    services:
+      redis:
+        image: redis
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      
+      mongodb:
+        image: mongo
+        ports:
+          - 27017:27017
+        options: >-
+          --health-cmd "mongosh --eval 'db.runCommand(\"ping\").ok'"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      # MongoDB Configuration
+      MONGODB_URI: mongodb://localhost:27017/test
+      MONGODB_DB_NAME: test
+      
+      # Redis Configuration
+      REDIS_URL: redis://localhost:6379
+      REDIS_HOST: localhost
+      REDIS_PORT: 6379
+      
+      # Application Configuration
+      NODE_ENV: test
+      CORS_ORIGIN: http://localhost:3000
+      PORT: 4000
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install backend dependencies
+      run: |
+        cd backend
+        npm install
+    
+    - name: Run backend linting
+      run: |
+        cd backend
+        npx eslint . --ext .js || true
+    
+    - name: Run backend tests
+      run: |
+        cd backend
+        npm test
+    
+    - name: Upload backend test coverage
+      uses: actions/upload-artifact@v3
+      with:
+        name: backend-coverage
+        path: backend/coverage/
+        retention-days: 5
+
+  frontend:
+    runs-on: ubuntu-latest
+    needs: backend
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install frontend dependencies
+      run: |
+        cd frontend
+        npm install
+    
+    - name: Run frontend linting
+      run: |
+        cd frontend
+        npx eslint src/ --ext .js,.jsx || true
+    
+    - name: Build frontend
+      run: |
+        cd frontend
+        npm run build
+    
+    - name: Upload frontend build
+      uses: actions/upload-artifact@v3
+      with:
+        name: frontend-build
+        path: frontend/build/
+        retention-days: 5
+
+  code-quality:
+    runs-on: ubuntu-latest
+    needs: [backend, frontend]
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Run CodeQL Analysis
+      uses: github/codeql-action/init@v2
+      with:
+        languages: javascript
+    
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2 

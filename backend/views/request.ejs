@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<style>
+    body
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.navbar {
+    
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    margin-bottom: 40px;
+
+  }
+  
+  .logo img {
+    flex-basis: 50%;
+    height: 90px; 
+    width: 160px;
+    margin-left: 70px;
+  }
+  
+  .nav-links {
+    display: flex;
+    justify-content: flex-end;
+    flex-basis: 75%;
+    margin-right: 80px;
+    
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: #fff;
+    margin-right: 100px;
+  }
+  
+  .nav-link:last-child {
+    margin-right: 0;
+  }
+
+  .nav-link:hover {
+    color: grey;
+    font-size: 20px;
+  }
+
+    .form{
+        height: 80%;
+        width: 100%;
+ display: flex;
+ flex-wrap: wrap;
+ gap: 20px;
+    }
+    .btn{
+        display: flex;
+        justify-content: flex-end;
+    }
+    form{
+        height: 50%;
+        width: 80%;
+        border: solid 0.5px lightgrey;
+        }
+    body{
+    height: 100vh;
+    width: 100vw;
+    }
+  .form-group{
+    margin: 20px;
+    height: 15%;
+    width: 45%;
+    display: flex;
+    row-gap: 15px;
+    flex-direction: column;
+  }
+  input{
+    width: 90%;
+    border: solid 1px lightgray;
+    padding: 19px;
+    border-radius: 15px;
+  }
+  button{
+    height: 50px;
+    width: 150px;
+    background-color: red;
+    margin: 15px;
+    font-size: 20px;
+    margin-right: 100px;
+  }
+  .formdiv{
+    margin-top: 200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+  }
+ button:hover{
+    background-color: rgb(190, 175, 175);
+    color: white;
+ }
+
+ .footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: white;
+    color: #fff;
+    padding: 20px;
+ }
+
+ .footer-section {
+    width: 25%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  
+  .footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .footer-section p {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 5px;
+  }
+  
+  .footer-section ul li a {
+    color: black;
+    text-decoration: none;
+  }
+  
+  .footer-section ul li a:hover {
+    text-decoration: underline;
+  }
+
+  h3
+  {
+    color: red;
+  }
+
+  .social1-link {
+    margin-right: 10px;
+    text-decoration: none;
+    color:red;
+  }
+ 
+</style>
+<body>
+    <div class="navbar">
+        <div class="logo">
+          <img src="/images.png" alt="Mall Logo">
+        </div>
+        <div class="nav-links">
+          <a href="/users/<%= id %>" class="nav-link">Home</a>
+          <a href="/allbooks/<%= id %>" class="nav-link">Books</a>
+          <a href="/bestseller/<%= id %>" class="nav-link">Best Seller</a>
+          <a href="/sellbooks/<%= id %>" class="nav-link">Sell the Book</a>
+          <a href="/usedBook/<%= id %>" class="nav-link">Used Books</a>
+          <a href="/request/<%= id %>" class="nav-link">Request a Book</a>
+          <a href="/mybooks/<%= id %>" class="nav-link">My Book</a>
+          <a href="/orders/<%= id %>" class="nav-link">My Orders</a>
+        </div>
+    </div>
+    <div class="formdiv">
+   <h1>Request a Book</h1>
+        <form action="/request" method="post">
+      <div class="form">
+        <div class="form-group">
+            <label for="isbn">ISBN13:</label>
+            <input type="text" id="isbn" name="isbn" placeholder="Enter ISBN13" required>
+        </div>
+    
+        <div class="form-group">
+            <label for="title">Book Title:</label>
+            <input type="text" id="title" name="title" placeholder="Enter Book Title" required>
+        </div>
+    
+        <div class="form-group">
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author" placeholder="Enter Author" required>
+        </div>
+    
+        <div class="form-group">
+            <label for="quantity">Quantity:</label>
+            <input type="text" id="quantity" name="quantity" value="1" min="1" placeholder="Enter Quantity" required>
+        </div>
+    
+        <div class="form-group">
+            <label for="email">Email Id:</label>
+            <input type="email" id="email" name="email" placeholder="Enter Email Id" required>
+        </div>
+    
+        <div class="form-group">
+            <label for="phone">Phone/Mobile:</label>
+            <input type="text" id="phone" name="phone" placeholder="Enter Phone/Mobile" required>
+        </div>
+    </div>
+    <div class="btn">
+    <button type="submit">request</button>
+</div>    
+</form>
+    </div>
+    <div class="footer">
+        <div class="footer-section">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="/aboutus">About Us</a></li>
+            <li><a href="/contactus">Contactus</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Policies</h3>
+          <ul>
+            <li><a href="/privacy">Privacy & Policy</a></li>
+            <li><a href="/terms">Terms Of Use</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Connect With Us</h3>
+          <a href="#" class="social1-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social1-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social1-link"><i class="fab fa-youtube"></i></a>
+          
+        </div>
+        
+        <div class="footer-section">
+          <h3>Help</h3>
+          <ul>
+            <li><a href="/faq">FAQ</a></li>
+
+          </ul>
+          
+        </div>
+      </div>
+</body>
+</html>

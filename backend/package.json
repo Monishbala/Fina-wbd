@@ -1,0 +1,62 @@
+{
+  "name": "fdfsd1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "jest --detectOpenHandles --forceExit",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage --collectCoverageFrom='controllers/**/*.js' --coverageDirectory=coverage",
+    "test:admin": "jest admin.test.js --detectOpenHandles --forceExit --coverage --collectCoverageFrom='controllers/admin.js' --coverageDirectory=coverage/admin",
+    "test:request": "jest request.test.js --detectOpenHandles --forceExit --coverage --collectCoverageFrom='controllers/request.js' --coverageDirectory=coverage/request",
+    "test:contactus": "jest contactus.test.js --detectOpenHandles --forceExit --coverage --collectCoverageFrom='controllers/contactus.js' --coverageDirectory=coverage/contactus",
+    "test:login": "jest login-register.test.js --detectOpenHandles --forceExit --coverage --collectCoverageFrom='controllers/login-register.js' --coverageDirectory=coverage/login",
+    "test:superuser": "jest superuser.test.js --detectOpenHandles --forceExit --coverage --collectCoverageFrom='controllers/superuser.js' --coverageDirectory=coverage/superuser",
+    "test:userhome": "jest userhome.test.js --detectOpenHandles --forceExit --coverage --collectCoverageFrom='controllers/userhome.js' --coverageDirectory=coverage/userhome"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.9",
+    "express": "^4.21.2",
+    "ioredis": "^5.6.1",
+    "js-cookie": "^3.0.5",
+    "mongoose": "^8.9.3",
+    "nodemailer": "^6.9.15",
+    "nodeman": "^1.1.2",
+    "nodemon": "^3.1.0",
+    "path": "^0.12.7",
+    "redis": "^5.0.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
+    "xml2js": "^0.6.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.1.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "verbose": true,
+    "collectCoverage": true,
+    "coverageReporters": [
+      "html",
+      "text",
+      "lcov"
+    ],
+    "coverageDirectory": "coverage",
+    "setupFilesAfterEnv": [
+      "./test/setup.js"
+    ]
+  }
+}

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="/admin.css" />
+    <style>
+      .admin-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+
+      .sidebar {
+        width: 25%;
+        background-color: #f0f0f0;
+        padding: 20px;
+      }
+
+      .search-bar {
+        width: 75%;
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+
+      .search-input {
+        width: 70%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-right: 5px;
+      }
+
+      .search-btn {
+        padding: 8px 16px;
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .search-btn:hover {
+        background-color: #45a049;
+      }
+
+      .main-content {
+        width: 75%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .info {
+        margin-top: 20px;
+      }
+
+      .book {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: 10px;
+      }
+
+      .box {
+        width: 300px;
+        height: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="admin-container">
+      <div class="sidebar">
+        <ul>
+          <li><a id="users" href="/adminhome/<%= admin._id %>" style="color: black">Users</a></li>
+          <li>
+            <a id="books" href="/adminhome/bookadmin/<%= admin._id %>" style="color: black">Books</a>
+          </li>
+          <li><a id="books" href="/admin/loginpages"  style="color: black">Logout</a></li>
+        </ul>
+      </div>
+
+      <div class="main-content" id="main">
+        <div class="search-bar">
+          <input
+            type="text"
+            id="searchInput"
+            class="search-input"
+            placeholder="Search by title or author..."
+          />
+          <button onclick="searchBooks()" class="search-btn">Search</button>
+        </div>
+
+        <div class="info">
+          <p class="info-1">Total no Of Users: <%= data.usersdata.length %></p>
+          <p class="info-1">Total no Of Books: <%= data.books.length %></p>
+          <p class="info-1">
+            Total no Of Used Books: <%= data.sellbook.length %>
+          </p>
+        </div>
+        <div id="usersbox" class="book-container">
+          <h2 class="info" style="text-align: center">All Books</h2>
+          <div class="book">
+            <% data.books.forEach(function(book) { %>
+            <div
+              class="box"
+              data-price="<%= book.Price %>"
+              data-discount="<%= book.Discount !== '0%' %>"
+              data-language="<%= book.Language %>"
+            >
+              <img src="<%= book.ImageUrl %>" />
+
+              <p class="tite"><%= book.Title %></p>
+              <p class="author"><%= book.Author %></p>
+              <p class="price"><%= book.Price %></p>
+              <% if (admin.permissions.book_deleting) { %>
+              <a
+                href="/delete/book/<%=book._id %>"
+                style="text-decoration: none"
+              >
+                <button type="button">Delete</button>
+              </a>
+              <% } %>
+            </div>
+            <% }); %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function searchBooks() {
+        var input, filter, bookDiv, books, title, author, i;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        bookDiv = document.getElementsByClassName("box");
+
+        for (i = 0; i < bookDiv.length; i++) {
+          title = bookDiv[i].getElementsByClassName("tite")[0];
+          author = bookDiv[i].getElementsByClassName("author")[0];
+          if (
+            title.innerHTML.toUpperCase().indexOf(filter) > -1 ||
+            author.innerHTML.toUpperCase().indexOf(filter) > -1
+          ) {
+            bookDiv[i].style.display = "";
+          } else {
+            bookDiv[i].style.display = "none";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sell the Book</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+       body
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.navbar {
+    
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    margin-bottom: 40px;
+
+  }
+  
+  .logo img {
+    flex-basis: 50%;
+    height: 90px; 
+    width: 160px;
+    margin-left: 70px;
+  }
+  
+  .nav-links {
+    display: flex;
+    justify-content: flex-end;
+    flex-basis: 75%;
+    margin-right: 80px;
+    
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: #fff;
+    margin-right: 100px;
+  }
+  
+  .nav-link:last-child {
+    margin-right: 0;
+  }
+
+  .nav-link:hover {
+    color: grey;
+    font-size: 20px;
+  }
+
+      .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .container h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+      }
+
+      label {
+        font-weight: bold;
+      }
+
+      input[type="text"],
+      input[type="number"],
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      button {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      .review {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+      }
+
+      .review label,
+      .review input {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .review input[type="text"],
+      .review input[type="number"] {
+        width: calc(50% - 10px);
+        display: inline-block;
+        margin-bottom: 0;
+      }
+
+      .review textarea {
+        width: 100%;
+      }
+
+      .add-review-btn {
+        background-color: #008cba;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-bottom: 10px;
+        cursor: pointer;
+      }
+
+      .add-review-btn:hover {
+        background-color: #005f80;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo">
+        <img src="/images.png" alt="Mall Logo">
+      </div>
+      <div class="nav-links">
+        <a href="/users/<%= id %>" class="nav-link">Home</a>
+        <a href="/allbooks/<%= id %>" class="nav-link">Books</a>
+        <a href="/bestseller/<%= id %>" class="nav-link">Best Seller</a>
+        <a href="/sellbooks/<%= id %>" class="nav-link">Sell the Book</a>
+        <a href="/usedBook/<%= id %>" class="nav-link">Used Books</a>
+        <a href="/request/<%= id %>" class="nav-link">Request a Book</a>
+        <a href="/mybooks/<%= id %>" class="nav-link">My Book</a>
+        <a href="/orders/<%= id %>" class="nav-link">My Orders</a>
+      </div>
+  </div>
+    <div class="container">
+      <h1>Sell Your Book</h1>
+      <form action="/sellbooks" method="POST">
+        <!-- Image URL -->
+        <label for="imageUrl">Image URL:</label><br />
+        <input type="text" id="imageUrl" name="ImageUrl" /><br /><br />
+
+        <!-- Title -->
+        <label for="title">Title:</label><br />
+        <input type="text" id="title" name=" Title" /><br /><br />
+
+        <!-- Released -->
+        <label for="released">Released:</label><br />
+        <input type="text" id="released" name="Released" /><br /><br />
+
+        <!-- Author -->
+        <label for="author">Author:</label><br />
+        <input type="text" id="author" name="Author" /><br /><br />
+
+        <!-- Publication -->
+        <label for="publication">Publication:</label><br />
+        <input type="text" id="publication" name="Publication" /><br /><br />
+
+        <!-- Price -->
+        <label for="price">Price:</label><br />
+        <input type="text" id="price" name="Price" /><br /><br />
+
+        <!-- MRP -->
+        <label for="mrp">MRP:</label><br />
+        <input type="text" id="mrp" name="MRP" /><br /><br />
+
+        <!-- Language -->
+        <label for="language">Language:</label><br />
+        <input type="text" id="language" name="Language" /><br /><br />
+
+        <!-- ISBN-10 -->
+        <label for="isbn10">ISBN-10:</label><br />
+        <input type="text" id="isbn10" name="ISBN_10" /><br /><br />
+
+        <!-- ISBN-13 -->
+        <label for="isbn13">ISBN-13:</label><br />
+        <input type="text" id="isbn13" name="ISBN_13" /><br /><br />
+
+        <!-- Pages -->
+        <label for="pages">Pages:</label><br />
+        <input type="text" id="pages" name="Pages" /><br /><br />
+
+        <!-- About the Book -->
+        <label for="aboutBook">About the Book:</label><br />
+        <textarea
+          id="aboutBook"
+          name="About_the_Book"
+          rows="4"
+          cols="50"
+        ></textarea
+        ><br /><br />
+
+        <input
+          type="submit"
+          value="Submit"
+          style="padding: 10px 20px; background-color: lime"
+        />
+      </form>
+    </div>
+  </body>
+</html>

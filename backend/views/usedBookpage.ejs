@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seller's Page</title>
+    <link rel="stylesheet" href="/books.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <style>
+            .navbar {
+      display: flex;
+      align-items: center;
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+    }
+
+    .logo img {
+      flex-basis: 50%;
+      height: 90px;
+      width: 160px;
+      margin-left: 70px;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: flex-end;
+      flex-basis: 75%;
+      margin-right: 80px;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .nav-link:last-child {
+      margin-right: 0;
+    }
+
+    .nav-link:hover {
+      color: grey;
+      font-size: 20px;
+    }
+        
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: white;
+    color: #fff;
+    padding: 20px;
+    
+  }
+  
+  
+  .footer-section {
+    width: 25%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  
+  .footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .footer-section p {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 5px;
+  }
+  
+  .footer-section ul li a {
+    color: black;
+    text-decoration: none;
+  }
+  
+  .footer-section ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  h3
+  {
+    color: red;
+  }
+
+        .flex {
+            display: flex;
+        }
+
+        .design {
+            flex: 25%;
+            padding: 20px;
+        }
+
+        .book {
+            flex: 75%;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .search-container {
+            margin-bottom: 20px;
+        }
+
+        .search-container input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+            margin-left:27% ;
+            width: 40%;
+
+        }
+
+        .search-container button {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .search-container button:hover {
+            background-color: #45a049;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo">
+        <img src="/images.png" alt="Mall Logo" />
+      </div>
+      <div class="nav-links">
+        <a href="/users/<%= id %>" class="nav-link">Home</a>
+        <a href="/allbooks/<%= id %>" class="nav-link">Books</a>
+        <a href="/bestseller/<%= id %>" class="nav-link">Best Seller</a>
+        <a href="/sellbooks/<%= id %>" class="nav-link">Sell the Book</a>
+        <a href="/usedBook/<%= id %>" class="nav-link">Used Books</a>
+        <a href="/request/<%= id %>" class="nav-link">Request a Book</a>
+        <a href="/mybooks/<%= id %>" class="nav-link">My Book</a>
+        <a href="/orders/<%= id %>" class="nav-link">My Orders</a>
+      </div>
+    </div>
+    <h2>Used Books</h2>
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search by title or author">
+      <button id="submitSearch">Search</button>
+    </div>
+    <div class="flex">
+      <div class="design">
+        <div class="search">
+          <label for="searchPrice">Enter Price :</label>
+          <input type="number" min="0" id="searchPrice" />
+        </div>
+        <div class="filter">
+                <label for="minDiscount">Minimum Discount % :</label>
+                <input type="number" min="0" max="100" id="minDiscount" />
+              </div>
+        <hr />
+        <div class="language-filter">
+          <label>Languages :</label><br />
+          <input type="checkbox" id="englishCheckbox" value="English" />
+          <label for="englishCheckbox">English</label><br />
+          <input type="checkbox" id="teluguCheckbox" value="Telugu" />
+          <label for="teluguCheckbox">Telugu</label><br />
+          <input type="checkbox" id="tamilCheckbox" value="Tamil" />
+          <label for="tamilCheckbox">Tamil</label><br />
+          <input type="checkbox" id="hindiCheckbox" value="Hindi" />
+          <label for="hindiCheckbox">Hindi</label><br />
+        </div>
+        <button id="submitFilter">Submit</button>
+        <button id="resetFilter">Reset Filter</button>
+      </div>
+      <div class="book">
+        <% books.forEach(function(book) { %>
+        <div
+          class="box"
+          data-price="<%= book.Price %>"
+          data-discount="<%= book.Discount !== '0%' %>"
+          data-language="<%= book.Language %>"
+        >
+          <a href="/books/<%= book._id %>/">
+            <img src="<%= book.ImageUrl %>" />
+          </a>
+          <p><%= book.Title %></p>
+          <p><%= book.Author %></p>
+          <p class="price"><%= book.Price %></p>
+        </div>
+        <% }); %>
+      </div>
+    </div>
+
+
+    <div class="footer">
+      <div class="footer-section">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="/aboutus">About Us</a></li>
+          <li><a href="/contactus">Contactus</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Policies</h3>
+        <ul>
+          <li><a href="/privacy">Privacy & Policy</a></li>
+          <li><a href="/terms">Terms Of Use</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Connect With Us</h3>
+        <a href="#" class="social1-link"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social1-link"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social1-link"><i class="fab fa-youtube"></i></a>
+      </div>
+
+      <div class="footer-section">
+        <h3>Help</h3>
+        <ul>
+          <li><a href="/faq">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+    const submitFilterButton = document.getElementById('submitFilter');
+    const resetFilterButton = document.getElementById('resetFilter');
+    const searchInput = document.getElementById('searchInput');
+
+    function filterBooks() {
+        const searchPrice = parseInt(document.getElementById('searchPrice').value) || Infinity;
+        const minDiscount = parseInt(document.getElementById('minDiscount').value) || 0;
+        const boxes = document.querySelectorAll('.box');
+        const englishChecked = document.getElementById('englishCheckbox').checked;
+        const teluguChecked = document.getElementById('teluguCheckbox').checked;
+        const tamilChecked = document.getElementById('tamilCheckbox').checked;
+        const hindiChecked = document.getElementById('hindiCheckbox').checked;
+        const searchQuery = searchInput.value.toLowerCase();
+
+        boxes.forEach(function (box) {
+            const price = parseInt(box.getAttribute('data-price'));
+            const hasDiscount = box.getAttribute('data-discount') === 'true';
+            const discountValue = parseInt(box.getAttribute('data-discount-value')) || 0;
+            const bookLanguage = box.getAttribute('data-language');
+            const bookTitle = box.getElementsByTagName('p')[0].innerText.toLowerCase(); // Adjusted to match the provided HTML structure
+            const bookAuthor = box.getElementsByTagName('p')[1].innerText.toLowerCase(); // Added to get the author name
+
+            let shouldBeShown = true;
+
+            if (searchPrice && (price > searchPrice)) {
+                shouldBeShown = false;
+            }
+
+            if (minDiscount && (!hasDiscount || discountValue > minDiscount)) {
+                shouldBeShown = false;
+            }
+
+            if (
+                (englishChecked && !bookLanguage.includes('English')) ||
+                (teluguChecked && !bookLanguage.includes('Telugu')) ||
+                (tamilChecked && !bookLanguage.includes('Tamil')) ||
+                (hindiChecked && !bookLanguage.includes('Hindi'))
+            ) {
+                shouldBeShown = false;
+            }
+
+            if (searchQuery && !(bookTitle.includes(searchQuery) || bookAuthor.includes(searchQuery))) { // Updated to search in both title and author
+                shouldBeShown = false;
+            }
+
+            if (shouldBeShown) {
+                box.style.display = 'block';
+            } else {
+                box.style.display = 'none';
+            }
+        });
+    }
+
+    function submitFilter() {
+        filterBooks();
+    }
+
+    function resetFilter() {
+        document.getElementById('searchPrice').value = '';
+        document.getElementById('minDiscount').value = '';
+        document.getElementById('englishCheckbox').checked = false;
+        document.getElementById('teluguCheckbox').checked = false;
+        document.getElementById('tamilCheckbox').checked = false;
+        document.getElementById('hindiCheckbox').checked = false;
+        searchInput.value = '';
+        filterBooks();
+    }
+
+    submitFilterButton.addEventListener('click', submitFilter);
+    resetFilterButton.addEventListener('click', resetFilter);
+    searchInput.addEventListener('input', filterBooks);
+});
+
+      </script>
+      
+      
+  </body>
+</html>

@@ -1,0 +1,144 @@
+body{
+    
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+.navbar {
+    
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+
+  }
+  
+  .logo img {
+    flex-basis: 50%;
+    height: 90px; 
+    width: 160px;
+    margin-left: 70px;
+  }
+  
+  .nav-links {
+    display: flex;
+    justify-content: flex-end;
+    flex-basis: 75%;
+    margin-right: 80px;
+    
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: #fff;
+    margin-right: 100px;
+
+  }
+  
+  .nav-link:last-child {
+    margin-right: 0;
+  }
+
+  .nav-link:hover {
+    color: grey;
+    font-size: 20px;
+  }
+
+
+
+body
+{
+    background-image: linear-gradient(#E8DBFC,#F8F9D2);
+}
+.author
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap:50px;
+    font-size:25px;
+}
+.sub-author
+{
+    width:100%;
+    border-bottom:solid;
+    padding:12px;
+    display: flex;
+}
+.div
+{
+    width:80%
+}
+.image
+{
+   width:20%;
+   margin-top: 40px;
+}
+img
+{
+    border-radius: 50%;
+    height: 160px;
+}
+
+   
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: white;
+    color: #fff;
+    padding: 20px;
+    
+  }
+  
+  
+  .footer-section {
+    width: 25%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  
+  .footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .footer-section p {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 5px;
+  }
+  
+  .footer-section ul li a {
+    color: black;
+    text-decoration: none;
+  }
+  
+  .footer-section ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  h3
+  {
+    color: red;
+  }
+
+  .social1-link {
+    margin-right: 10px;
+    text-decoration: none;
+    color:red;
+  }
+  
+  

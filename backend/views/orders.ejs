@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Orders</title>
+   
+</head>
+<style>
+            body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .navbar {
+      display: flex;
+      align-items: center;
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      margin-bottom: 50px;
+    }
+
+    .logo img {
+      flex-basis: 50%;
+      height: 90px;
+      width: 160px;
+      margin-left: 70px;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: flex-end;
+      flex-basis: 75%;
+      margin-left: 40px;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: #fff;
+      margin-right: 70px;
+    }
+
+    .nav-link:last-child {
+      margin-right: 0;
+    }
+
+    .nav-link:hover {
+      color: grey;
+      font-size: 20px;
+    }
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #333;
+}
+
+.user-details {
+    margin-bottom: 20px;
+}
+
+.orders {
+    border-top: 2px solid #ccc;
+    padding-top: 20px;
+}
+
+.orders ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.orders li {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.orders li p {
+    margin: 5px 0;
+}
+
+
+</style>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="/images.png" alt="Mall Logo" />
+          </div>
+          <div class="nav-links">
+            <a href="/users/<%= id %>" class="nav-link">Home</a>
+            <a href="/allbooks/<%=id%>" class="nav-link">Books</a>
+            <a href="/bestseller/<%= id %>" class="nav-link">Best Seller</a>
+            <a href="/sellbooks/<%= id %>" class="nav-link">Sell the Book</a>
+            <a href="/usedBook/<%= id %>" class="nav-link">Used Books</a>
+            <a href="/request/<%= id %>" class="nav-link">Request a Book</a>
+            <a href="/mybooks/<%= id %>" class="nav-link">My Book</a>
+            <a href="/orders/<%= id %>" class="nav-link">My Orders</a>
+          </div>
+    </div>
+    <div class="container">
+        <h1>User Orders</h1>
+        <div class="user-details">
+            <h2>User Details</h2>
+            <p><strong>User ID:</strong> <%= user._id %></p>
+            <p><strong>Username:</strong> <%= user.username %></p>
+        </div>
+        <div class="orders">
+            <h2>User Orders</h2>
+            <% if (user.orders.length > 0) { %>
+                <ul>
+                    <% user.orders.forEach(function(order) { %>
+                            <li>
+                                <p><strong>Name:</strong> <%= order.name %></p>
+                                <p><strong>Phone:</strong> <%= order.phone %></p>
+                                <p><strong>Address:</strong> <%= order.address %></p>
+                                <p><strong>City:</strong> <%= order.city %></p>
+                                <p><strong>Pincode:</strong> <%= order.pincode %></p>
+                                <div class="books">
+                                    <% var total=0 %>
+                                    <% for (let i = 0; i < order.books.length; i++) { %>
+                                     <img  src="<%= order.books[i].ImageUrl %>" alt="">
+                                     <p><%= order.books[i].Price %></p>
+                                     <% total+=Number(order.books[i].Price) %>
+                                  <%  } %><hr>
+                                  <p>Total Price :<%= total %></p>
+                                </div>
+                                <!-- Add more order details as needed -->
+                            </li>
+                    <% }); %>
+                </ul>
+            <% } else { %>
+                <p>No orders found.</p>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

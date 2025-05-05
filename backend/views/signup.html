@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+        :root {
+            --white-color: hsl(0, 0%, 100%);
+            --black-color: hsl(0, 0%, 0%);
+            --body-font: "Poppins", sans-serif;
+            --h1-font-size: 1.75rem;
+            --normal-font-size: 1rem;
+            --small-font-size: 0.813rem;
+            --font-medium: 500;
+        }
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        body,
+        input,
+        button {
+            font-size: var(--normal-font-size);
+            font-family: var(--body-font);
+        }
+        body {
+            color: white;
+        }
+        input,
+        button {
+            border: none;
+            outline: none;
+        }
+        a {
+            text-decoration: none;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .Signup {
+            position: relative;
+            height: 100vh;
+            display: grid;
+            align-items: center;
+        }
+        .Signup__img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        .Signup__form {
+            position: relative;
+            background-color: hsla(0, 0%, 10%, 0.1);
+            border: 2px solid white;
+            margin-inline: 1.5rem;
+            padding: 2.5rem 1.5rem;
+            border-radius: 1rem;
+            backdrop-filter: blur(8px);
+        }
+        .Signup__title {
+            text-align: center;
+            font-size: var(--h1-font-size);
+            font-weight: var(--font-medium);
+            margin-bottom: 2rem;
+        }
+        .Signup__content,
+        .Signup__box {
+            display: grid;
+        }
+        .Signup__content {
+            row-gap: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+        .Signup__box {
+            grid-template-columns: max-content 1fr;
+            align-items: center;
+            column-gap: 0.75rem;
+            border-bottom: 2px solid var(--white-color);
+        }
+        .Signup__icon,
+        .Signup__eye {
+            font-size: 1.25rem;
+        }
+        .Signup__input {
+            width: 100%;
+            padding-block: 0.8rem;
+            background: none;
+            color: var(--white-color);
+            position: relative;
+            z-index: 1;
+        }
+        .Signup__box-input {
+            position: relative;
+        }
+        .Signup__label {
+            position: absolute;
+            left: 0;
+            top: 13px;
+            font-weight: var(--font-medium);
+            transition: top 0.3s, font-size 0.3s;
+        }
+        .Signup__eye {
+            position: absolute;
+            right: 0;
+            top: 18px;
+            z-index: 10;
+            cursor: pointer;
+        }
+        .Signup__box:nth-child(2) input {
+            padding-right: 1.8rem;
+        }
+        .Signup__button {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            background-color: var(--white-color);
+            font-weight: var(--font-medium);
+            cursor: pointer;
+            margin-bottom: 2rem;
+        }
+        .Signup__input:focus + .Signup__label {
+            top: -12px;
+            font-size: var(--small-font-size);
+        }
+        .Signup__input:not(:placeholder-shown).Signup__input:not(:focus) + .Signup__label {
+            top: -12px;
+            font-size: var(--small-font-size);
+        }
+        @media screen and (min-width: 576px) {
+            .Signup {
+                justify-content: center;
+            }
+            .Signup__form {
+                width: 432px;
+                padding: 4rem 3rem 3.5rem;
+                border-radius: 1.5rem;
+            }
+            .Signup__title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <title>Signup form</title>
+</head>
+<body>
+    <div class="Signup">
+        <img src="/image3.jpg" alt="Signup image" class="Signup__img" />
+        <form action="/signup" method="post" class="Signup__form" onsubmit="return validateForm()">
+            <h1 class="Signup__title">Signup</h1>
+            <div class="Signup__content">
+                <div class="Signup__box">
+                    <i class="ri-user-3-line Signup__icon"></i>
+                    <div class="Signup__box-input">
+                        <input type="email" name="email" required class="Signup__input" id="Signup-email" placeholder=" " />
+                        <label for="Signup-email" class="Signup__label">Email</label>
+                    </div>
+                </div>
+                <div class="Signup__box">
+                    <i class="ri-lock-2-line Signup__icon"></i>
+                    <div class="Signup__box-input">
+                        <input type="password" name="pass1" required class="Signup__input" id="Signup-pass1" placeholder=" " />
+                        <label for="Signup-pass1" class="Signup__label">Password</label>
+                        <i class="ri-eye-off-line Signup__eye" id="Signup-eye1"></i>
+                    </div>
+                </div>
+                <div class="Signup__box">
+                    <i class="ri-lock-2-line Signup__icon"></i>
+                    <div class="Signup__box-input">
+                        <input type="password" name="pass2" required class="Signup__input" id="Signup-pass2" placeholder=" " />
+                        <label for="Signup-pass2" class="Signup__label">Confirm Password</label>
+                        <i class="ri-eye-off-line Signup__eye" id="Signup-eye2"></i>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="Signup__button">Signup</button>
+            <p class="already">
+                <a href="/login" style="color: white">Already have an account?</a>
+            </p>
+        </form>
+    </div>
+    <script>
+        const showHiddenPass = (passId, eyeId) => {
+            const input = document.getElementById(passId);
+            const iconEye = document.getElementById(eyeId);
+
+            iconEye.addEventListener("click", () => {
+                if (input.type === "password") {
+                    input.type = "text";
+                    iconEye.classList.add("ri-eye-line");
+                    iconEye.classList.remove("ri-eye-off-line");
+                } else {
+                    input.type = "password";
+                    iconEye.classList.remove("ri-eye-line");
+                    iconEye.classList.add("ri-eye-off-line");
+                }
+            });
+        };
+
+        showHiddenPass("Signup-pass1", "Signup-eye1");
+        showHiddenPass("Signup-pass2", "Signup-eye2");
+
+        function validateForm() {
+            const pass1 = document.getElementById("Signup-pass1").value;
+            const pass2 = document.getElementById("Signup-pass2").value;
+            const passwordPattern = /^(?=.*[A-Za-z])(?=.*\W)[A-Za-z\W\d]{8,}$/;
+
+            if (!passwordPattern.test(pass1)) {
+                alert("Password must be at least 8 characters long and contain at least one letter and one special character.");
+                return false;
+            }
+
+            if (pass1 !== pass2) {
+                alert("Passwords do not match.");
+                return false;
+            }
+
+            return true; 
+        }
+    </script>
+</body>
+</html>

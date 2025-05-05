@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Book</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh; /* Ensure it stretches full height */
+        }
+
+        /* Sidebar styling */
+        .sidebar {
+            width: 30%;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            position: fixed; /* Make the sidebar fixed */
+            top: 0;
+            left: 0;
+            height: 100vh; /* Full height */
+            overflow-y: auto; /* Scrollable if content overflows */
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+
+        /* Content styling */
+        .content {
+            margin-left: 30%; /* Offset content for the fixed sidebar */
+            width: 70%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        h3 {
+            margin-bottom: 20px;
+        }
+
+        /* Make content responsive */
+        @media only screen and (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            .content {
+                margin-left: 0;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Main container -->
+    <div class="container">
+        <!-- Sidebar with navigation links -->
+        <div class="sidebar">
+            <a href="/superuser/home">Admins</a>
+            <a href="/admincreate">Create Admin</a>
+            <a href="/superuser/addbook">Add Book</a>
+            <a href="/superuser">Logout</a>
+        </div>
+
+        <!-- Main content area -->
+        <div class="content">
+            <h3>Add New Book</h3>
+            <form action="/addbook" method="POST">
+                <label for="ImageUrl">Image URL:</label>
+                <input type="text" id="ImageUrl" name="ImageUrl" required>
+
+                <label for="Title">Title:</label>
+                <input type="text" id="Title" name="Title" required>
+
+                <label for="Released">Released Date:</label>
+                <input type="text" id="Released" name="Released" required>
+
+                <label for="Author">Author:</label>
+                <input type="text" id="Author" name="Author" required>
+
+                <label for="Publication">Publication:</label>
+                <input type="text" id="Publication" name="Publication" required>
+
+                <label for="Price">Price:</label>
+                <input type="text" id="Price" name="Price" required>
+
+                <label for="Discount">Discount:</label>
+                <input type="text" id="Discount" name="Discount" required>
+
+                <label for="MRP">MRP:</label>
+                <input type="text" id="MRP" name="MRP" required>
+
+                <label for="Language">Language:</label>
+                <input type="text" id="Language" name="Language" required>
+
+                <label for="ISBN_10">ISBN 10:</label>
+                <input type="text" id="ISBN_10" name="ISBN_10" required>
+
+                <label for="ISBN_13">ISBN 13:</label>
+                <input type="text" id="ISBN_13" name="ISBN_13" required>
+
+                <label for="Pages">Pages:</label>
+                <input type="text" id="Pages" name="Pages" required>
+
+                <label for="About_the_Book">About the Book:</label>
+                <textarea id="About_the_Book" name="About_the_Book" rows="4" required></textarea>
+
+                <button type="submit">Add Book</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

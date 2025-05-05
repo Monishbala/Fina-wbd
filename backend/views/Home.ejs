@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="/homepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="header">
+        <div class="social-media">
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+        </div>
+        <div class="phone-number">For query:<img src="https://dtbtob4osa700.cloudfront.net/images/callRed.png"> 04461343008</div>
+        <button class="sign-up-btn"><a href="/login" style="text-decoration: none;color: white;">LOGOUT</a> </button>
+      </div>
+    <div class="navbar">
+        <div class="logo">
+          <img src="/images.png" alt="Mall Logo">
+        </div>
+        <div class="nav-links">
+          <a href="/users/<%= id %>" class="nav-link">Home</a>
+          <a href="/allbooks/<%= id %>" class="nav-link">Books</a>
+          <a href="/bestseller/<%= id %>" class="nav-link">Best Seller</a>
+          <a href="/sellbooks/<%= id %>" class="nav-link">Sell the Book</a>
+          <a href="/usedBook/<%= id %>" class="nav-link">Used Books</a>
+          <a href="/request/<%= id %>" class="nav-link">Request a Book</a>
+          <a href="/mybooks/<%= id %>" class="nav-link">My Book</a>
+          <a href="/orders/<%= id %>" class="nav-link">My Orders</a>
+        </div>
+    </div>
+<div class="topdeals">
+        <h1 style="color: red; text-align: center;">Books</h1>
+        <br>
+        <div class="topdeals-inner">
+          <div class="book">
+            <span class="deal"></span>
+            <div class="book-main">
+                <div class="image">
+                    <a href="/book/65f9d425daef5e08b881752d/<%= id %>">
+                    <img src="https://d2g9wbak88g7ch.cloudfront.net/productimages/images200/561/9780241647561.jpg" alt="">
+                </a>
+               </div>
+    <div class="name">Percy Jackson and the Olympians</div>
+    <div class="details">
+        <p>Rick Riordan</p>
+        <p class="rate">₹425 </p>
+        <p class="original">₹599 </p>
+        </div>
+    </div>
+           
+    <span class="discount">29%</span>
+    
+    </div>
+            <div class="book">
+            <span class="deal"></span>
+            <div class="book-main">
+                <div class="image">
+                    <a href="/book/65f9d655daef5e08b881752f/<%= id %>">
+                    <img src="https://d2g9wbak88g7ch.cloudfront.net/productimages/images200/254/9788171826254.jpg" alt="">
+                </a>
+                </div>
+    <div class="name">Chanakya Neeti with Chanakya Sutra Sahit</div>
+    <div class="details">
+        <p>Dr Ashwini Parashar</p>
+        <p class="rate">₹1,131 </p>
+        <p class="original">₹1,271 </p>
+        </div>
+    </div>
+           
+    <span class="discount">31%</span>
+    
+    </div>
+            <div class="book">
+            <span class="deal"></span>
+            <div class="book-main">
+                <div class="image">
+                    <a href="/book/65f9d971daef5e08b8817535/<%= id %>">
+                    <img src="https://d2g9wbak88g7ch.cloudfront.net/productimages/images200/254/9788171826254.jpg" alt="">
+                </a>
+                </div>
+    <div class="name">Teachings from the Ramayana on Family & Life</div>
+    <div class="details">
+        <p>Shantanu Gupta</p>
+        <p class="rate">₹239 </p>
+        <p class="original">₹450 </p>
+        </div>
+    </div>
+           
+    <span class="discount">40%</span>
+    
+    </div>
+       
+  </div>
+  <br>
+  <a href="/allbooks/<%= id %>">
+    <button class="topdeals-button">View More</button>
+  </a>
+  <hr>
+  </div>
+      <div class="deliver">
+        <div class="deliver-1">
+            <img class="deliver-2" width="100" height="100" src="https://tinyurl.com/y98mbphh">
+            <h4 class="deliver-3" style="text-align: center;">Guaranteed Home Delivery</h4>
+            <p class="deliver-4">We provide express shipping for 27000+ Indian pin codes</p>
+        </div>
+        <div class="deliver-1">
+            <img  class="deliver-2" width="100" height="100" src="https://therightbookstoreindia.com/wp-content/uploads/2021/09/360_F_266259364_xLQQ1evsZQt7oSRbcJW8zH5cHlijjsdW-150x150.jpg">
+            <h4  class="deliver-3" style="text-align: center;">Premium Quality Books
+               </h4>
+            <p class="deliver-4"> Get handpicked books at unbelievable rates</p>
+        </div>
+        <div class="deliver-1">
+            <img class="deliver-2" width="100" height="100" src="https://therightbookstoreindia.com/wp-content/uploads/2021/09/images-2-150x150.png">
+            <h4  class="deliver-3" style="text-align: center;">COD Available
+                </h4>
+            <p class="deliver-4">Along with UPI/Card/Netbanking/Paylate</p>
+        </div>
+        <div class="deliver-1">
+            <img class="deliver-2" width="100" height="100" src="https://therightbookstoreindia.com/wp-content/uploads/2023/04/insurance-claim-document-finance-7731980-150x150.png">
+            <h4  class="deliver-3" style="text-align: center;">Return/Replacement Available
+                </h4>
+            <p class="deliver-4">WhatsApp customer support to resolve issues at the earliest</p>
+        </div>
+      </div>
+      <div class="bestseller">
+        <h1 style="color: red; text-align: center;">Best Seller</h1>
+        <div class="topdeals-inner">
+          <div class="book" data-price="599" data-discount="true" data-discount-value="29" data-language="English">
+            <span class="deal"></span>
+            <div class="book-main">
+            <a href="/book/65f9d425daef5e08b881752d/<%= id %>"> <img src="https://d2g9wbak88g7ch.cloudfront.net/productimages/images200/561/9780241647561.jpg"> </a>
+             <p style="overflow: hidden; height: 20px; width: 100px;" >Percy Jackson and the Olympians : The Chalice of the Gods</p>
+             <p>Rick Riordan</p>
+             <p class="price">₹599</p>
+             </div>
+             <p class="discount">29% </p>
+         </div>
+         <div class="book" data-price="239" data-discount="true" data-discount-value="40" data-language="English">
+          <span class="deal"></span>
+          <div class="book-main">
+          <a href="/book/65f9d971daef5e08b8817535/<%= id %>"> <img src="https://d2g9wbak88g7ch.cloudfront.net/productimages/images200/254/9788171826254.jpg"> </a>
+             <p>Teachings from the Ramayana on Family & Life</p>
+             <p>Shantanu Gupta</p>
+             <p class="price">₹239</p>
+             </div>
+             <p class="discount">40% </p>
+
+            </div>
+         <div class="book" data-price="799" data-discount="true" data-discount-value="38" data-language="Hindi">
+          <span class="deal"></span>
+   <div class="book-main">
+          <a href="/book/65f9da7adaef5e08b8817537/<%= id %>"> <img src="https://www.bookswagon.com/productimages/images200/219/9789390924219.jpg">
+        </a>      <p>The Intelligent Investor</p>
+             <p>Benjamin Graham</p>
+             <p class="price">₹799</p>
+             </div>
+             <p class="discount">38% </p>
+
+            </div>
+  </div>
+ <a href="/bestseller/<%= id %>"> <button class="topdeals-button">View More
+
+  
+ </button> </a>
+      </div>
+      <hr>
+      
+      <div class="footer">
+        <div class="footer-section">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="/aboutus">About Us</a></li>
+            <li><a href="/contactus">Contactus</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Policies</h3>
+          <ul>
+           
+            <li><a href="/terms">Terms Of Use</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Connect With Us</h3>
+          <a href="#" class="social1-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social1-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social1-link"><i class="fab fa-youtube"></i></a>
+          
+        </div>
+        
+        <div class="footer-section">
+          <h3>Help</h3>
+          <ul>
+            <li><a href="/faq">FAQ</a></li>
+
+          </ul>
+          
+        </div>
+      </div>
+      <script>
+        let currentIndex = 0;
+const totalAuthors = document.querySelectorAll('.authors').length;
+const authorsWrapper = document.getElementById('authorsWrapper');
+const authorWidth = document.querySelector('.authors').offsetWidth;
+
+function scrollAuthors(direction) {
+  currentIndex = (currentIndex + direction + totalAuthors) % totalAuthors;
+  const scrollAmount = -currentIndex * authorWidth;
+
+  authorsWrapper.style.transition = 'transform 1s ease';
+  authorsWrapper.style.transform = `translateX(${scrollAmount}px)`;
+
+  if (currentIndex === totalAuthors - 1 && direction === 1) {
+    setTimeout(() => {
+      authorsWrapper.style.transition = '';
+      authorsWrapper.style.transform = 'translateX(0)';
+      currentIndex = 0;
+    }, 500); 
+  }
+  if (currentIndex === 0 && direction === -1) {
+    setTimeout(() => {
+      authorsWrapper.style.transition = '';
+      authorsWrapper.style.transform = `translateX(-${totalAuthors * authorWidth}px)`;
+      currentIndex = totalAuthors - 1;
+    }, 500);
+  }
+}
+      </script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

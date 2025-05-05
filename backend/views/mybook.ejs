@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .navbar {
+      display: flex;
+      align-items: center;
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      margin-bottom: 50px;
+    }
+
+    .logo img {
+      flex-basis: 50%;
+      height: 90px;
+      width: 160px;
+      margin-left: 70px;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: flex-end;
+      flex-basis: 75%;
+      margin-left: 40px;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: #fff;
+      margin-right: 70px;
+    }
+
+    .nav-link:last-child {
+      margin-right: 0;
+    }
+
+    .nav-link:hover {
+      color: grey;
+      font-size: 20px;
+    }
+    .book {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-left: 40px;
+}
+
+.book-image {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.book-details {
+    flex: 1;
+}
+
+.book-title {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.book-price {
+    font-size: 16px;
+    color: #888;
+}
+
+
+
+.order-button {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    background-color: green;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-left: 40px;
+    transition: background-color 0.3s;
+}
+
+.order-button:hover {
+    background-color: #0056b3;
+}
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+          <img src="/images.png" alt="Mall Logo">
+        </div>
+        <div class="nav-links">
+          <a href="/users/<%= id %>" class="nav-link">Home</a>
+          <a href="/allbooks/<%= id %>" class="nav-link">Books</a>
+          <a href="/bestseller/<%= id %>" class="nav-link">Best Seller</a>
+          <a href="/sellbooks/<%= id %>" class="nav-link">Sell the Book</a>
+          <a href="/usedBook/<%= id %>" class="nav-link">Used Books</a>
+          <a href="/request/<%= id %>" class="nav-link">Request a Book</a>
+          <a href="/mybooks/<%= id %>" class="nav-link">My Book</a>
+          <a href="/orders/<%= id %>" class="nav-link">My Orders</a>
+        </div>
+    </div>
+    
+    <% for (let i = 0; i < data.books.length; i++) { %>
+        <div class="book">
+            <img src="<%= data.books[i].ImageUrl %>" alt="" class="book-image">
+            <div class="book-details">
+                <p class="book-title">Title: <%= data.books[i].Title %></p>
+                <p class="book-price">Price:₹ <%= data.books[i].Price %></p>
+            </div>
+        </div>
+    <% } %>
+    
+    <% if (data.books.length !== 0) { %>
+        <a href="/order/<%= data._id %>" class="order-button"><button>Order</button></a>
+    <% } %>
+    
+</body>
+</html>
+

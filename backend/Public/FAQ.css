@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-image: linear-gradient(#EF32D9,#89FFFD);
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+th {
+    color:white;
+    background-color:rgb(49, 43, 43);
+}
+tr
+{
+    background-color: silver;
+}
+td a {
+    text-decoration: none;
+    color: black;
+}
+td a:hover {
+    color: rgb(194, 96, 96);
+}
+#faq-sections {
+    margin-top: 20px;
+}
+h3,h2
+{
+    font-variant: small-caps;
+}
