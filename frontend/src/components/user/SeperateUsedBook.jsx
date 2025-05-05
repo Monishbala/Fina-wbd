@@ -6,11 +6,6 @@ import { useNavigate } from "react-router-dom";
 const BookDetails = () => {
   const { bookid, id } = useParams();
   const [bookData, setBookData] = useState(null);
-  const [review, setReview] = useState({
-    name: "",
-    rating: "",
-    description: "",
-  });
   const navigate = useNavigate()
   useEffect(() => {
     axios
