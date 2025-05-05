@@ -9,7 +9,7 @@ const BookDetails = () => {
   const navigate = useNavigate()
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_BACKEND}/sellbooks/book/${bookid}/${id}`)
+      .get(`${process.env.REACT_APP_BACKENDURL}/sellbooks/book/${bookid}/${id}`)
       .then((response) => {
         setBookData(response.data.data);
       })

@@ -19,7 +19,7 @@ const OrderPage = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_BACKEND}/order/${id}`);
+        const response = await axios.get(`${process.env.REACT_APP_BACKENDURL}/order/${id}`);
         setUserData(response.data.data);
       } catch (err) {
         console.error("Error fetching user for order page:", err);
