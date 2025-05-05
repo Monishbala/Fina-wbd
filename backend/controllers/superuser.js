@@ -31,7 +31,7 @@ class SuperuserController {
 
   // Render superuser login page
   superuserlogin(req, res) {
-    res.sendFile(path.join(__dirname, "../views/Superuser.html"));
+    res.sendFile(path.join(__dirname, "../views/SuperUser.html"));
   }
 
   /**
