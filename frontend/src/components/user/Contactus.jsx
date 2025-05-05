@@ -119,10 +119,18 @@ export default function ContactUs() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:4000/contactus", formData);
+      await axios.post("http://localhost:4000/contact", formData);
       setMessage("Your message has been sent successfully!");
-
+      setFormData({
+        name: "",
+        email: "",
+        address: "",
+        phone: "",
+        category: "general",
+        description: "",
+      });
     } catch (error) {
+      console.error("Error submitting form:", error);
       setMessage("Failed to send message. Please try again.");
     }
   };
@@ -220,22 +228,22 @@ export default function ContactUs() {
           <p>9:00am to 6:00pm</p>
         </div>
         <div style={styles.socialMedia}>
-          <a href="#" style={styles.socialLink}>
+          <a href="https://facebook.com" style={styles.socialLink} target="_blank" rel="noopener noreferrer">
             Facebook
           </a>
-          <a href="#" style={styles.socialLink}>
+          <a href="https://twitter.com" style={styles.socialLink} target="_blank" rel="noopener noreferrer">
             Twitter
           </a>
-          <a href="#" style={styles.socialLink}>
+          <a href="https://linkedin.com" style={styles.socialLink} target="_blank" rel="noopener noreferrer">
             LinkedIn
           </a>
-          <a href="#" style={styles.socialLink}>
+          <a href="https://pinterest.com" style={styles.socialLink} target="_blank" rel="noopener noreferrer">
             Pinterest
           </a>
-          <a href="#" style={styles.socialLink}>
+          <a href="https://youtube.com" style={styles.socialLink} target="_blank" rel="noopener noreferrer">
             YouTube
           </a>
-          <a href="#" style={styles.socialLink}>
+          <a href="https://instagram.com" style={styles.socialLink} target="_blank" rel="noopener noreferrer">
             Instagram
           </a>
         </div>

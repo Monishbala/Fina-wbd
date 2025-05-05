@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -10,7 +10,7 @@ const AdminHome = () => {
   const [permissions, setPermissions] = useState({});
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       const response = await axios.get(`http://localhost:4000/adminhome/${admin}`);
       const { data, admin: adminInfo } = response.data;
@@ -24,11 +24,11 @@ const AdminHome = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [admin]);
 
   useEffect(() => {
     fetchData();
-  }, [admin]);
+  }, [admin, fetchData]);
 
   if (loading) return <div>Loading...</div>;
   const  handledelete= async(id)=>{
@@ -79,11 +79,13 @@ const AdminHome = () => {
               <p>Email: {user.username}</p>
               <p>Password: {user.password}</p>
               {permissions.user_deleting && (
-                <a  style={{ textDecoration: "none" }}>
-                  <button  onClick={()=>{handledelete(user._id)}}type="button" style={deleteButtonStyle}>
-                    Delete
-                  </button>
-                </a>
+                <button 
+                  onClick={() => handledelete(user._id)}
+                  type="button" 
+                  style={{...deleteButtonStyle, border: 'none', background: 'none', cursor: 'pointer'}}
+                >
+                  Delete
+                </button>
               )}
             </div>
           ))}

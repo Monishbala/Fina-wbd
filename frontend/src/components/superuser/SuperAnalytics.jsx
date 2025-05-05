@@ -103,7 +103,7 @@ export default function AnalyticsDashboard() {
         })
         setLoading(false)
       })
-  }, [])
+  }, [navigate])
 
   if (loading) {
     return <div className="min-h-screen flex items-center justify-center">Loading...</div>

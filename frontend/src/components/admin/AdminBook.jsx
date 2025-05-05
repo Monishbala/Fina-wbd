@@ -125,9 +125,12 @@ const AdminBook = () => {
                 <p className="author" style={bookAuthorStyle}>{book.Author}</p>
                 <p className="price" style={bookPriceStyle}>{book.Price}</p>
                 {permissions.book_deleting && (
-                  <a  style={deleteButtonLinkStyle}>
-                    <button onClick={() => handledelete(book._id)} style={deleteButtonStyle}>Delete</button>
-                    </a>
+                  <button 
+                    onClick={() => handledelete(book._id)} 
+                    style={{...deleteButtonLinkStyle, ...deleteButtonStyle, border: 'none', background: 'none', cursor: 'pointer'}}
+                  >
+                    Delete
+                  </button>
                 )}
               </div>
             ))}

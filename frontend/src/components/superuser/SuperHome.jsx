@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 // import Link from 'next/link';
 import axios from 'axios';
 import Cookie from 'js-cookie'
-import { navigate, useNavigate } from 'react-router-dom';
-// import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const SuperHome = () => {
   const navigate=useNavigate();
@@ -21,7 +20,7 @@ const SuperHome = () => {
       .catch((error) => {
         console.error('There was an error fetching the admin data!', error);
       });
-  }, []);
+  }, [navigate]);
 
   const handleChangePermissions = (adminId, permissions) => {
     axios.post(`http://localhost:4000/admincreate/changepermissions/${adminId}`, permissions)
@@ -33,8 +32,9 @@ const SuperHome = () => {
         console.error('There was an error updating the permissions!', error);
       });
   };
-  const handlelogout = () =>{
-       Cookie.remove('superuser')
+  const handlelogout = () => {
+    Cookie.remove('superuser');
+    navigate('/superuser');
   }
   return (
     <div className="container">
@@ -43,7 +43,9 @@ const SuperHome = () => {
         <a href="/admincreate" className="sidebar-link">Create Admin</a>
         <a href="/superuser/addbook" className="sidebar-link">Add Book</a>
         <a href="/superuser/analytics" className="sidebar-link">Analytics</a>
-        <a onClick={handlelogout} href="/superUser" className="sidebar-link">Logout</a>
+        <button onClick={handlelogout} className="sidebar-link" style={{background: 'none', border: 'none', color: 'white', cursor: 'pointer', width: '100%', textAlign: 'left', padding: '15px', fontSize: '18px'}}>
+          Logout
+        </button>
       </div>
 
       <div className="content">

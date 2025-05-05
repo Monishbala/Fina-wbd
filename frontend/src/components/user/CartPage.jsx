@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Navbar from "./Navbar";
-import Footer from "./Footer";
+// import Footer from "./Footer";
 import {Trash} from 'lucide-react'
 const MyBooksPage = () => {
   const { id } = useParams();
   const [books, setBooks] = useState([]);
   const [error, setError] = useState("");
-  const fetchBooks = async () => {
+  const fetchBooks = useCallback(async () => {
     try {
       const response = await axios.get(`http://localhost:4000/mybooks/${id}`);
       setBooks(response.data.data.books); // Assuming books are under `data.books`
@@ -16,10 +16,10 @@ const MyBooksPage = () => {
       console.error("Error fetching books:", err);
       setError("Failed to fetch books. Please try again.");
     }
-  };
+  }, [id]);
   useEffect(() => {
     fetchBooks();
-  }, [id]);
+  }, [id, fetchBooks]);
   const deleteBook = async (bookId) => {
     try {
       // Adjust the endpoint as needed to delete a book from the user's cart.
