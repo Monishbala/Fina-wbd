@@ -105,7 +105,8 @@ describe('Admin Controller', () => {
                 title: 'Test Sell Book',
                 author: 'Test Author',
                 ISBN: '0987654321',
-                price: 20
+                price: 20,
+                seller: 'testuser@example.com'
             });
 
             const response = await request(app)
@@ -154,7 +155,8 @@ describe('Admin Controller', () => {
                 title: 'Test Sell Book',
                 author: 'Test Author',
                 ISBN: '0987654321',
-                price: 20
+                price: 20,
+                seller: 'testuser@example.com'
             });
 
             const response = await request(app)
