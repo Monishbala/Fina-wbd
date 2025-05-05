@@ -45,7 +45,7 @@ export default function AnalyticsDashboard() {
         }
     // Replace the endpoint below with your backend analytics API.
     axios
-      .get(`${process.env.REACT_BACKEND}/admin/analytics`)
+      .get(`${process.env.REACT_APP_BACKENDURL}/admin/analytics`)
       .then((res) => {
         setData(res.data)
         setLoading(false)

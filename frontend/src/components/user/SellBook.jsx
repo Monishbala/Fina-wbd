@@ -90,7 +90,7 @@ const SellBook = () => {
         userId: id // Add the user ID from the URL params
       };
       
-      const response = await axios.post(`${process.env.REACT_BACKEND}/sellbooks`, dataToSend);
+      const response = await axios.post(`${process.env.REACT_APP_BACKENDURL}/sellbooks`, dataToSend);
       alert(response.data.message || "Book listed successfully!");
       setFormData(initialFormData); // Clear the form
       setErrors({}); // Clear errors

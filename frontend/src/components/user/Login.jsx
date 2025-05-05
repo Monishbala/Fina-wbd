@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  console.log(process.env.REACT_APP_BACKENDURL);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -22,7 +23,7 @@ const Login = () => {
     setError('');
 
     try {
-      const response = await axios.post(`${process.env.REACT_BACKEND}/login`, {
+      const response = await axios.post(`${process.env.REACT_APP_BACKENDURL}/login`, {
         email,
         pass: password,
       });

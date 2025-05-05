@@ -44,7 +44,7 @@ const BookDetails = () => {
 
   if (!bookData) return <div>Loading...</div>;
    const HandleBook= async() => {
-     await axios.get(`${process.env.REACT_BACKEND}/buy/${bookid}/${userid}`).then((response)=>{
+     await axios.get(`${process.env.REACT_APP_BACKENDURL}/buy/${bookid}/${userid}`).then((response)=>{
       if (response.status===200) {
          navigate(`/mybooks/${userid}`)
       } else{

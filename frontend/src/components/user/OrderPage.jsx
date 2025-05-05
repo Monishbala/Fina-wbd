@@ -38,7 +38,7 @@ const OrderPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${process.env.REACT_BACKEND}/order/${id}`, formData);
+      await axios.post(`${process.env.REACT_APP_BACKENDURL}/order/${id}`, formData);
       alert("Order placed successfully!");
       navigate(`/orders/${id}`);
     } catch (err) {

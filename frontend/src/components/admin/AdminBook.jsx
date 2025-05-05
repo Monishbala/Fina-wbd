@@ -16,7 +16,7 @@ const AdminBook = () => {
     try {
       console.log(admin);
       
-      const response = await axios.get(`${process.env.REACT_BACKEND}/adminhome/bookadmin/${admin}`);
+      const response = await axios.get(`${process.env.REACT_APP_BACKENDURL}/adminhome/bookadmin/${admin}`);
       console.log(response.data);
       
       const { data, admin2: adminInfo } = response.data;
@@ -56,7 +56,7 @@ const AdminBook = () => {
   if (loading) return <div>Loading...</div>;
  
   const  handledelete= async(id)=>{
-    axios.get(`http://localhost:4000/delete/book/${id}`).then((response)=>{
+    axios.get(`${process.env.REACT_APP_BACKENDURL}/delete/book/${id}`).then((response)=>{
            fetchData()
            alert("book deleted successfuully")
        })

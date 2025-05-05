@@ -47,7 +47,7 @@ const AddBook = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post(`${process.env.REACT_BACKEND}`, formData)
+    axios.post(`${process.env.REACT_APP_BACKENDURL}/admin/addbook`, formData)
       .then(response => {
         alert('Book added successfully');
         setFormData({

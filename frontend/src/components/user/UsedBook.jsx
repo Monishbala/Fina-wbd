@@ -17,7 +17,7 @@ const AllBooks = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_BACKEND}/usedBook/${id}`);
+        const response = await axios.get(`${process.env.REACT_APP_BACKENDURL}/usedBook/${id}`);
         setBooks(response.data.books);
       } catch (error) {
         console.error("Error fetching books:", error);
