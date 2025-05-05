@@ -41,6 +41,15 @@ const connectRedis = async () => {
     }
 };
 
+// Disconnect from Redis
+const disconnectRedis = async () => {
+    try {
+        await redisClient.quit();
+    } catch (error) {
+        console.error('Failed to disconnect from Redis:', error);
+    }
+};
+
 // Call connectRedis to establish the connection
 connectRedis();
 
@@ -87,5 +96,7 @@ module.exports = {
     redisClient,
     cacheMiddleware,
     setCache,
-    clearCache
+    clearCache,
+    connectRedis,
+    disconnectRedis
 }; 
