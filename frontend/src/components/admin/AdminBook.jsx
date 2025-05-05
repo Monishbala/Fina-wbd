@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -11,7 +11,8 @@ const AdminBook = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const fetchData = async () => {
+
+  const fetchData = useCallback(async () => {
     try {
       console.log(admin);
       
@@ -37,11 +38,11 @@ const AdminBook = () => {
     } finally {
       setLoading(false);
     }
-  };
-  // Fetch the admin data on component mount
+  }, [admin]);
+
   useEffect(() => {
     fetchData();
-  }, [admin]);
+  }, [fetchData]);
 
   // Filter books based on the search query
   const filteredBooks = booksData.filter((book) => {
@@ -61,6 +62,10 @@ const AdminBook = () => {
        })
   }
 
+  const handleLogout = () => {
+    navigate('/admin/loginpages');
+  };
+
   return (
     <div style={{ display: 'flex', height: '100vh' }}>
       {/* Sidebar */}
@@ -75,7 +80,7 @@ const AdminBook = () => {
           <li>
             <button
               style={logoutButtonStyle}
-              onClick={() => navigate('/admin/loginpages')}
+              onClick={handleLogout}
             >
               Logout
             </button>

@@ -1,6 +1,6 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import {BrowserRouter , Routes , Route} from 'react-router-dom'
 import Landing from './components/LandingPge'
 import Register from './components/user/Register'
 import Login from './components/user/Login'
@@ -29,7 +29,7 @@ import Faq from './components/user/Faq';
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
         <Route path='/' Component={Landing}/>
         <Route path='/signup' Component={Register}/>
@@ -58,7 +58,7 @@ function App() {
         <Route path="/terms" element={< TermOfUse />} />
         <Route path="/faq" element={< Faq />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
 
