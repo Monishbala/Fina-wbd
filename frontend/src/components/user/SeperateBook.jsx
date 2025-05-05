@@ -14,7 +14,7 @@ const BookDetails = () => {
   const navigate = useNavigate()
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/book/${bookid}/${userid}`)
+      .get(`${process.env.REACT_APP_BACKENDURL}/book/${bookid}/${userid}`)
       .then((response) => {
         setBookData(response.data.data);
       })
