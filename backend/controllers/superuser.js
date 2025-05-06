@@ -17,14 +17,16 @@ const adminmodel = require("../Models/adminmodel");
  *       type: object
  *       required:
  *         - email
- *         - password
+ *         - pass
  *       properties:
  *         email:
  *           type: string
  *           description: Superuser email
- *         password:
+ *           example: "superuser@example.com"
+ *         pass:
  *           type: string
  *           description: Superuser password
+ *           example: "password123"
  */
 
 class SuperuserController {
@@ -36,7 +38,7 @@ class SuperuserController {
 
   /**
    * @swagger
-   * /superUser:
+   * /superuser/login:
    *   post:
    *     summary: Superuser login
    *     tags: [Superuser]
@@ -45,12 +47,46 @@ class SuperuserController {
    *       content:
    *         application/json:
    *           schema:
-   *             $ref: '#/components/schemas/Superuser'
+   *             type: object
+   *             required:
+   *               - email
+   *               - pass
+   *             properties:
+   *               email:
+   *                 type: string
+   *                 example: "superuser@example.com"
+   *               pass:
+   *                 type: string
+   *                 example: "password123"
    *     responses:
    *       200:
    *         description: Login successful
+   *         content:
+   *           text/plain:
+   *             schema:
+   *               type: string
+   *               example: "Super login is successful"
    *       401:
    *         description: Invalid credentials
+   *         content:
+   *           text/plain:
+   *             schema:
+   *               type: string
+   *               example: "Wrong password"
+   *       404:
+   *         description: User not found
+   *         content:
+   *           text/plain:
+   *             schema:
+   *               type: string
+   *               example: "User not found"
+   *       500:
+   *         description: Internal server error
+   *         content:
+   *           text/plain:
+   *             schema:
+   *               type: string
+   *               example: "Internal server error"
    */
   async superuserloginpost(req, res) {
     const { email, pass } = req.body;

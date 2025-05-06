@@ -30,7 +30,7 @@ class HomePageLinksController {
 
   /**
    * @swagger
-   * /used-books/{id}:
+   * /usedbook/{id}:
    *   get:
    *     summary: Get all used books
    *     tags: [Home Page]
@@ -82,7 +82,7 @@ class HomePageLinksController {
 
   /**
    * @swagger
-   * /all-books/{id}:
+   * /allbooks/{id}:
    *   get:
    *     summary: Get all books
    *     tags: [Home Page]
@@ -305,7 +305,7 @@ class HomePageLinksController {
 
   /**
    * @swagger
-   * /my-books/{id}:
+   * /mybooks/{id}:
    *   get:
    *     summary: Get user's books
    *     tags: [Home Page]

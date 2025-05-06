@@ -14,19 +14,33 @@ const userModel = require("../Models/request");
  *     BookRequest:
  *       type: object
  *       required:
- *         - bookName
+ *         - isbn
+ *         - title
  *         - author
- *         - userId
+ *         - quantity
+ *         - email
+ *         - phone
  *       properties:
- *         bookName:
+ *         isbn:
  *           type: string
- *           description: Name of the requested book
+ *           description: ISBN of the requested book
+ *         title:
+ *           type: string
+ *           description: Title of the requested book
  *         author:
  *           type: string
  *           description: Author of the requested book
- *         userId:
+ *         quantity:
+ *           type: integer
+ *           minimum: 1
+ *           description: Quantity of books requested (must be at least 1)
+ *         email:
  *           type: string
- *           description: ID of the user making the request
+ *           format: email
+ *           description: Email address of the requester
+ *         phone:
+ *           type: integer
+ *           description: Phone number of the requester (digits only)
  */
 
 class RequestController {
@@ -55,8 +69,23 @@ class RequestController {
    *     responses:
    *       200:
    *         description: Request submitted successfully
+   *         content:
+   *           text/plain:
+   *             schema:
+   *               type: string
+   *               example: "Request for the book is successful"
    *       400:
    *         description: Invalid request data
+   *         content:
+   *           text/plain:
+   *             schema:
+   *               type: string
+   *               oneOf:
+   *                 - const: "All fields are required"
+   *                 - const: "Quantity must be a positive number"
+   *                 - const: "Phone must be a number"
+   *       500:
+   *         description: Server error
    */
   async requestpost(req, res) {
     try {
